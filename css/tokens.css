@@ -1,0 +1,36 @@
+:root {
+  /* Layout */
+  --sidebar-w: 280px;
+  --max-content: 760px;
+
+  /* Color system (edit these to change theme) */
+  --bg-page: #fafafa;
+  --bg-surface: #ffffff;
+  --text-primary: #111111;
+  --text-muted: #666666;
+  --border: #e6e6e6;
+  --accent: #1f3a5f;
+  --accent-weak: rgba(31, 58, 95, 0.12);
+
+  /* Typography */
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Spacing scale */
+  --s-1: 6px;
+  --s-2: 10px;
+  --s-3: 14px;
+  --s-4: 20px;
+  --s-5: 28px;
+  --s-6: 40px;
+  --s-7: 56px;
+
+  /* Radius / shadow */
+  --r-1: 10px;
+  --r-2: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.06);
+
+  /* Motion */
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --dur: 520ms;
+}
