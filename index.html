@@ -1,1 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vikamat — Ideas and insights</title>
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="name">Vikamat</div>
+        <div class="role">Writer • Product • Growth</div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="active" href="./index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./letters/index.html">Letters</a>
+      </nav>
+
+      <div class="social">
+        <div class="small">Links</div>
+        <a class="small" href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="small" href="#" target="_blank" rel="noopener">X / Twitter</a>
+        <a class="small" href="mailto:you@vikamat.com">Email</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+        <div class="reveal">
+          <div class="kicker">Newsletter</div>
+          <h1>Ideas and insights for the modern creator.</h1>
+          <p class="small">Short letters on building products, growing adoption, and thinking clearly. No spam.</p>
+
+          <div class="card">
+            <div class="small">Subscribe</div>
+            <div class="inputRow">
+              <input type="email" placeholder="you@example.com" aria-label="Email" />
+              <button type="button" onclick="alert('Later we can wire this to a provider. For now it is a placeholder.')">Subscribe</button>
+            </div>
+            <div class="small" style="margin-top:10px;">Unsubscribe anytime.</div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="chips" role="tablist" aria-label="Categories">
+            <button class="chip active" data-cat="All" type="button">All</button>
+            <button class="chip" data-cat="Audience" type="button">Audience</button>
+            <button class="chip" data-cat="Writing" type="button">Writing</button>
+            <button class="chip" data-cat="Business" type="button">Business</button>
+            <button class="chip" data-cat="Mindset" type="button">Mindset</button>
+          </div>
+
+          <div class="posts" id="posts">
+            <a class="postRow reveal" data-cat="Business" href="./letters/writing-tools.html" style="--i:0;">
+              <div class="postMeta"><span class="tag">Business</span><span>•</span><span>5 min</span><span class="pinned" style="margin-left:auto;">Pinned</span></div>
+              <h3 style="margin:10px 0 0;">The only writing tools I actually use</h3>
+              <div class="small" style="margin-top:6px;">A simple stack that keeps you publishing.</div>
+            </a>
+
+            <a class="postRow reveal" data-cat="Mindset" href="./letters/writing-tools.html" style="--i:1;">
+              <div class="postMeta"><span class="tag">Mindset</span><span>•</span><span>3 min</span></div>
+              <h3 style="margin:10px 0 0;">How I avoid over-optimizing</h3>
+              <div class="small" style="margin-top:6px;">Simple rules that prevent analysis paralysis.</div>
+            </a>
+
+            <a class="postRow reveal" data-cat="Audience" href="./letters/writing-tools.html" style="--i:2;">
+              <div class="postMeta"><span class="tag">Audience</span><span>•</span><span>4 min</span></div>
+              <h3 style="margin:10px 0 0;">Write for one person first</h3>
+              <div class="small" style="margin-top:6px;">Specificity scales better than you think.</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <hr />
+          <div class="card">
+            <div class="kicker">Mission</div>
+            <h2 style="margin-top:10px;">Create and earn on your terms.</h2>
+            <p class="small">If you like pragmatic frameworks and zero fluff, you’ll fit right in.</p>
+            <div class="inputRow">
+              <input type="email" placeholder="you@example.com" aria-label="Email" />
+              <button type="button" onclick="alert('Placeholder. We can wire this later.')">Subscribe</button>
+            </div>
+          </div>
+
+          <div class="small" style="margin-top: var(--s-6);">
+            © <span id="y"></span> Vikamat. Built with static files.
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="./js/reveal.js"></script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // simple category filter
+    const chips = document.querySelectorAll(".chip");
+    const posts = document.querySelectorAll(".postRow");
+    chips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        chips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        const cat = chip.dataset.cat;
+        posts.forEach(p => {
+          p.style.display = (cat === "All" || p.dataset.cat === cat) ? "block" : "none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
 
