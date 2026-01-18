@@ -2,112 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — Vikamat</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Vibhav Kamat</title>
+
+  <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
 </head>
+
 <body>
   <div class="container">
     <aside class="sidebar">
       <div class="brand">
-        <div class="name">Vikamat</div>
-        <div class="role">Writer • Product • Growth</div>
+        <a href="./index.html" style="text-decoration:none;">
+          <div class="name" style="font-family: var(--font-display); font-size:20px;">
+            Vibhav Kamat
+          </div>
+        </a>
+        <div class="role"><strong>Vi</strong></div>
       </div>
 
       <nav class="nav" aria-label="Primary">
-        <a href="./index.html">Home</a>
         <a class="active" href="./about.html">About</a>
-        <a href="./letters/index.html">Letters</a>
+        <a href="./work.html">Work</a>
+        <a href="./life.html">Life</a>
+        <a href="./art.html">Art</a>
+        <a href="./chat.html">Let’s chat</a>
       </nav>
+
+      <div class="social">
+        <div class="kicker">Social</div>
+        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">LinkedIn</a>
+
+        <div class="small" style="margin-top:18px;">
+          © <span id="year"></span> Vikamat.<br/>
+          Built with AI prompts, coffee and desire to learn.
+        </div>
+      </div>
     </aside>
 
     <main class="main">
       <div class="content">
-        <div class="reveal">
-          <div class="kicker">About</div>
-          <h1>Hey, I’m Vibhav.</h1>
-          <p>I write pragmatic letters about building products, improving growth mechanics, and making decisions with clarity.</p>
-          <p class="small">Replace this copy with your story, your credentials, and what you want the site to do for you.</p>
-        </div>
+        <section class="reveal">
+          <h1>About</h1>
+          <p class="lead">
+            This page will tell my story with radical clarity: what I believe, how I work, and what I’m building toward.
+          </p>
+        </section>
 
-        <div class="reveal">
-          <div class="card">
-            <div class="kicker">Quick facts</div>
-            <ul style="margin:14px 0 0; padding-left: 18px; color: rgba(17,17,17,0.9);">
-              <li>Focus: product strategy, GTM, retention, growth loops</li>
-              <li>Writing cadence: weekly letters</li>
-              <li>North star: actionable insights, low fluff</li>
-            </ul>
+        <section class="reveal" style="margin-top: 28px;">
+          <div class="card" style="background:#F5F7F8;">
+            <h3 style="margin:0 0 10px; color:#011425;">Wireframe placeholders</h3>
+            <p style="margin:0; color:#1F4959;">
+              We’ll add: origin story, product leadership narrative, key bets, principles, and “how I think.”
+            </p>
           </div>
-        </div>
-
-        <div class="reveal">
-          <div class="small" style="margin-top: var(--s-6);">
-            <a href="./index.html">← Back home</a>
-          </div>
-        </div>
+        </section>
       </div>
     </main>
   </div>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
   <script src="./js/reveal.js"></script>
-
-  <!-- Theme Toggle (self-contained, no external JS) -->
-<script>
-(function () {
-  const KEY = "vk_theme";
-  const root = document.documentElement;
-
-  function apply(theme) {
-    if (theme === "light") {
-      root.setAttribute("data-theme", "light");
-    } else {
-      root.removeAttribute("data-theme");
-    }
-  }
-
-  // Init: saved > system > default
-  const saved = localStorage.getItem(KEY);
-  if (saved) {
-    apply(saved);
-  } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-    apply("light");
-  }
-
-  // Create button dynamically (no HTML edits needed)
-  const btn = document.createElement("button");
-  btn.textContent = root.getAttribute("data-theme") === "light" ? "Dark" : "Light";
-  btn.style.width = "100%";
-  btn.style.marginTop = "18px";
-
-  btn.onclick = () => {
-    const isLight = root.getAttribute("data-theme") === "light";
-    const next = isLight ? "dark" : "light";
-    apply(next);
-    localStorage.setItem(KEY, next);
-    btn.textContent = next === "light" ? "Dark" : "Light";
-  };
-
-  // Insert button into sidebar automatically
-  const sidebar = document.querySelector(".sidebar");
-  if (sidebar) {
-    const wrap = document.createElement("div");
-    wrap.style.marginTop = "18px";
-
-    const label = document.createElement("div");
-    label.className = "small";
-    label.style.marginTop = "10px";
-    label.textContent = "Theme";
-
-    wrap.appendChild(btn);
-    wrap.appendChild(label);
-    sidebar.appendChild(wrap);
-  }
-})();
-</script>
-
-  
 </body>
 </html>
-
