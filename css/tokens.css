@@ -3,7 +3,7 @@
   --sidebar-w: 280px;
   --max-content: 760px;
 
-  /* Typography (polished) */
+  /* Typography */
   --font-body: "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   --font-display: "Playfair Display", ui-serif, Georgia, "Times New Roman", Times, serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -18,7 +18,7 @@
   --lh-body: 1.75;
   --lh-head: 1.05;
 
-  /* Spacing scale */
+  /* Spacing */
   --s-1: 6px;
   --s-2: 10px;
   --s-3: 14px;
@@ -30,50 +30,31 @@
   /* Radius / shadow */
   --r-1: 10px;
   --r-2: 16px;
-  --shadow: 0 14px 34px rgba(1, 20, 37, 0.22);
+  --shadow: 0 14px 34px rgba(1, 20, 37, 0.18);
 
   /* Motion */
   --ease: cubic-bezier(.2,.8,.2,1);
   --dur: 520ms;
 
-  /* === THEME TOKENS (default = your current dark-right layout) === */
-  --bg-page: #5c7c89;               /* LEFT softer */
-  --bg-deep: #011425;               /* RIGHT darker */
-  --bg-surface: rgba(255,255,255,0.94);
+  /* === Option 1 (inverted): DARK LEFT, LIGHT RIGHT === */
 
-  --text-primary: #242424;
-  --text-muted: rgba(36, 36, 36, 0.72);
+  /* Sidebar (LEFT) */
+  --sidebar-bg: #011425;                 /* very dark navy */
+  --sidebar-text: rgba(255,255,255,0.92);
+  --sidebar-muted: rgba(255,255,255,0.72);
+  --sidebar-divider: rgba(255,255,255,0.14);
 
-  --border: rgba(1, 20, 37, 0.18);
+  /* Main (RIGHT) */
+  --main-bg: #5c7c89;                    /* light-blue family anchor (visible) */
+  --main-text: #242424;                  /* near-black */
+  --main-muted: rgba(36,36,36,0.70);
+  --main-divider: rgba(1,20,37,0.12);
 
+  /* Card surface on light background */
+  --bg-surface: rgba(255,255,255,0.92);
+  --border: rgba(1, 20, 37, 0.14);
+
+  /* Accent (links, buttons) */
   --accent: #1f4959;
-  --accent-weak: rgba(31, 73, 89, 0.16);
-
-  /* Derived tokens used by base/components */
-  --on-dark: rgba(255, 255, 255, 0.92);
-  --on-dark-muted: rgba(255, 255, 255, 0.78);
-  --on-dark-soft: rgba(255, 255, 255, 0.86);
-  --divider-on-dark: rgba(255, 255, 255, 0.16);
-  --sidebar-divider: rgba(255, 255, 255, 0.22);
-}
-
-/* === LIGHT THEME OVERRIDES === */
-html[data-theme="light"] {
-  --bg-page: #f4f6f8;               /* page */
-  --bg-deep: #ffffff;               /* main background becomes light */
-  --bg-surface: #ffffff;
-
-  --text-primary: #111827;
-  --text-muted: rgba(17, 24, 39, 0.68);
-
-  --border: rgba(17, 24, 39, 0.12);
-
-  --accent: #1f4959;
-  --accent-weak: rgba(31, 73, 89, 0.12);
-
-  --on-dark: rgba(17, 24, 39, 0.92);
-  --on-dark-muted: rgba(17, 24, 39, 0.70);
-  --on-dark-soft: rgba(17, 24, 39, 0.86);
-  --divider-on-dark: rgba(17, 24, 39, 0.12);
-  --sidebar-divider: rgba(17, 24, 39, 0.10);
+  --accent-weak: rgba(31, 73, 89, 0.14);
 }
