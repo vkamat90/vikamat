@@ -39,9 +39,17 @@ a:hover { opacity: 0.85; }
 }
 
 /* RIGHT: Darker */
+/* RIGHT: Darker (with subtle depth gradient) */
 .main {
   padding: var(--s-7) var(--s-6);
-  background: var(--bg-deep);
+
+  /* Layered gradients for a soft architectural depth */
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(92, 124, 137, 0.18), transparent 55%),
+    radial-gradient(900px 600px at 85% 30%, rgba(31, 73, 89, 0.16), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.00) 38%),
+    var(--bg-deep);
+
   color: rgba(255, 255, 255, 0.92);
 }
 
