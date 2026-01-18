@@ -119,6 +119,32 @@
       I started my career as a salesman and I can smell it.
     </p>
 
+    <section class="reveal" style="margin-top: 28px;">
+  <div class="kicker">Latest</div>
+  <h2 style="margin-top:10px;">Recent notes across Work, Life, and Art.</h2>
+
+  <div class="posts" id="postsMountHome" data-posts-mount data-filter=""></div>
+</section>
+
+<script>
+  // Render Top 3 posts on Home once posts.js is available
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof window.VK_RENDER_POSTS === "function") {
+      // Render all, then slice by DOM (cheapest, no framework)
+      window.VK_RENDER_POSTS({ mountId: "postsMountHome", filterTag: null });
+
+      // Keep only first 3 cards
+      const mount = document.getElementById("postsMountHome");
+      if (mount) {
+        const cards = Array.from(mount.querySelectorAll("a.postRow"));
+        cards.slice(3).forEach(n => n.remove());
+      }
+    }
+  });
+</script>
+
+
+    
     <a href="./chat.html">
       <button type="button">Let’s chat</button>
     </a>
@@ -130,5 +156,8 @@
   </script>
 
   <script src="./js/reveal.js"></script>
+        <script src="./data/posts.js"></script>
+<script src="./js/posts.js"></script>
+
 </body>
 </html>
