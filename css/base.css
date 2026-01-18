@@ -8,16 +8,17 @@ body {
   margin: 0;
   font-family: var(--font-body);
   font-size: var(--text-base);
+  line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* The page base follows the RIGHT (light) now */
+  /* Overall base doesn't matter much because panels set their own bg,
+     but keep it aligned with the main for clean edges */
   background: var(--main-bg);
   color: var(--main-text);
-  line-height: var(--lh-body);
 }
 
-/* Links */
+/* Links (inside cards, etc.) */
 a { color: var(--accent); text-decoration: none; }
 a:hover { opacity: 0.85; }
 
@@ -27,7 +28,7 @@ a:hover { opacity: 0.85; }
   min-height: 100vh;
 }
 
-/* LEFT: Dark */
+/* LEFT: Tinted sidebar */
 .sidebar {
   position: sticky;
   top: 0;
@@ -35,41 +36,30 @@ a:hover { opacity: 0.85; }
   padding: var(--s-6) var(--s-5);
   background: var(--sidebar-bg);
   color: var(--sidebar-text);
-  border-right: 1px solid var(--sidebar-divider);
+  border-right: 1px solid var(--sidebar-border);
 }
 
-/* RIGHT: Light (visible gradient) */
+/* RIGHT: Dark main with subtle depth */
 .main {
   padding: var(--s-7) var(--s-6);
-
-  /* Visible but tasteful light-blue depth */
   background:
-    radial-gradient(1200px 700px at 22% 12%, rgba(255,255,255,0.32), transparent 60%),
-    radial-gradient(1000px 700px at 80% 30%, rgba(31,73,89,0.10), transparent 62%),
-    linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.00) 55%),
+    radial-gradient(1200px 700px at 22% 12%, rgba(92,124,137,0.22), transparent 60%),
+    radial-gradient(1000px 700px at 85% 30%, rgba(31,73,89,0.16), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.00) 55%),
     var(--main-bg);
-
   color: var(--main-text);
 }
 
-.content {
-  max-width: var(--max-content);
-}
+.content { max-width: var(--max-content); }
 
 /* Helpers */
-.small {
-  font-size: 13px;
-  letter-spacing: 0.01em;
-}
-
-/* Kicker should be subtle on light */
+.small { font-size: 13px; letter-spacing: 0.01em; }
 .kicker {
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-family: var(--font-body);
   font-weight: 500;
-  color: var(--main-muted);
 }
 
 /* Headings (editorial) */
@@ -77,43 +67,30 @@ h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: -0.015em;
-  color: var(--main-text);
 }
 
-h1 {
-  font-size: var(--h1);
-  line-height: var(--lh-head);
-  margin: 0 0 var(--s-4);
-}
+/* On right (dark) */
+.main h1, .main h2, .main h3 { color: #ffffff; }
+.main p { color: var(--main-subtext); }
+.main .kicker { color: rgba(92,124,137,0.92); }
+.main .small { color: rgba(92,124,137,0.85); }
 
-h2 {
-  font-size: var(--h2);
-  line-height: 1.18;
-  margin: var(--s-6) 0 var(--s-3);
-}
+/* On left (sidebar) */
+.sidebar .kicker { color: var(--sidebar-muted); }
+.sidebar .small { color: var(--sidebar-muted); }
 
-h3 {
-  font-size: var(--h3);
-  line-height: 1.22;
-  margin: var(--s-5) 0 var(--s-2);
-}
+/* Sizes / rhythm */
+h1 { font-size: var(--h1); line-height: var(--lh-head); margin: 0 0 var(--s-4); }
+h2 { font-size: var(--h2); line-height: 1.18; margin: var(--s-6) 0 var(--s-3); }
+h3 { font-size: var(--h3); line-height: 1.22; margin: var(--s-5) 0 var(--s-2); }
 
-/* Body text */
-p {
-  margin: 0 0 var(--s-4);
-  font-size: var(--text-base);
-  color: var(--main-text);
-}
+p { margin: 0 0 var(--s-4); }
 
 .lead {
   font-size: var(--text-lead);
-  color: rgba(36,36,36,0.82);
   line-height: 1.7;
+  color: rgba(92,124,137,0.92);
 }
-
-/* Lists */
-ul, ol { color: rgba(36,36,36,0.86); }
-li { margin: 6px 0; }
 
 /* Divider */
 hr {
@@ -121,10 +98,6 @@ hr {
   border-top: 1px solid var(--main-divider);
   margin: var(--s-6) 0;
 }
-
-/* Sidebar-specific text tones */
-.sidebar .small { color: var(--sidebar-muted); }
-.sidebar .kicker { color: rgba(255,255,255,0.62); }
 
 /* Mobile */
 @media (max-width: 920px) {
@@ -134,7 +107,7 @@ hr {
     position: relative;
     height: auto;
     border-right: none;
-    border-bottom: 1px solid var(--sidebar-divider);
+    border-bottom: 1px solid var(--sidebar-border);
   }
 
   .main { padding: var(--s-6) var(--s-5); }
