@@ -2,173 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vikamat — Ideas and insights</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vikamat — Vibhav Kamat</title>
+
+  <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
 </head>
+
 <body>
   <div class="container">
+    <!-- LEFT: Sticky Navigation -->
     <aside class="sidebar">
       <div class="brand">
-        <div class="name">Vikamat</div>
-        <div class="role">Writer • Product • Growth</div>
+        <div class="name">Vibhav Kamat</div>
+        <div class="role"><em>Call me “vi”</em></div>
       </div>
 
       <nav class="nav" aria-label="Primary">
         <a class="active" href="./index.html">Home</a>
         <a href="./about.html">About</a>
-        <a href="./letters/index.html">Letters</a>
+        <a href="./work.html">Work</a>
+        <a href="./life.html">Life</a>
+        <a href="./art.html">Art</a>
+        <a href="./chat.html">Let’s chat</a>
       </nav>
 
       <div class="social">
-        <div class="small">Links</div>
-        <a class="small" href="#" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="small" href="#" target="_blank" rel="noopener">X / Twitter</a>
-        <a class="small" href="mailto:you@vikamat.com">Email</a>
+        <div class="kicker">Social</div>
+        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">LinkedIn</a>
+
+        <div class="small" style="margin-top:18px;">
+          © <span id="year"></span> Vikamat.<br/>
+          Built with AI prompts, coffee and desire to learn.
+        </div>
       </div>
     </aside>
 
+    <!-- RIGHT: Main -->
     <main class="main">
       <div class="content">
-        <div class="reveal">
-          <div class="kicker">Newsletter</div>
-          <h1>Ideas and insights for the modern creator.</h1>
-            <p class="lead">Short letters on building products, growing adoption, and thinking clearly. No spam.</p>
+        <!-- Landing Hook -->
+        <section class="reveal">
+          <div class="kicker">RADICAL CLARITY</div>
 
+          <h1>The best always starts with a question.</h1>
+
+          <p class="lead">
+            Life Mantra: “Be curious, Not judemental” — Ted Lasso
+          </p>
+        </section>
+
+        <!-- Pillars -->
+        <section class="reveal" style="margin-top: 28px;">
+          <div class="posts">
+            <a class="postRow" href="./work.html">
+              <div class="postMeta">
+                <span class="tag">Work</span>
+                <span>Experiments • Outcomes • Product leadership</span>
+              </div>
+              <h3 style="margin:10px 0 6px; color:#fff;">Build credibility through real decisions.</h3>
+              <div class="small">Writing on products, growth, systems, and the “why” behind the work.</div>
+            </a>
+
+            <a class="postRow" href="./life.html">
+              <div class="postMeta">
+                <span class="tag">Life</span>
+                <span>Habits • Reflections • Becoming</span>
+              </div>
+              <h3 style="margin:10px 0 6px; color:#fff;">Document the human behind the resume.</h3>
+              <div class="small">Notes on energy, health, constraints, and what I’m learning in public.</div>
+            </a>
+
+            <a class="postRow" href="./art.html">
+              <div class="postMeta">
+                <span class="tag">Art</span>
+                <span>Photography • Visual storytelling</span>
+              </div>
+              <h3 style="margin:10px 0 6px; color:#fff;">Images that carry meaning.</h3>
+              <div class="small">Photo-led entries. Quiet moments. Travel. Light. Composition.</div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Optional CTA to chat (wireframe placeholder; Cal.com in Step 3) -->
+        <section class="reveal" style="margin-top: 28px;">
           <div class="card">
-            <div class="small">Subscribe</div>
-            <div class="inputRow">
-              <input type="email" placeholder="you@example.com" aria-label="Email" />
-              <button type="button" onclick="alert('Later we can wire this to a provider. For now it is a placeholder.')">Subscribe</button>
-            </div>
-            <div class="small" style="margin-top:10px;">Unsubscribe anytime.</div>
+            <div class="kicker" style="color:#242424;">Mentorship</div>
+            <h3 style="margin:10px 0 6px;">If you’re building something, let’s talk.</h3>
+            <p class="small" style="margin:0 0 14px;">
+              Recruiter, peer, or mentee — I’m happy to connect when there’s mutual learning.
+            </p>
+            <a href="./chat.html"><button type="button">Let’s chat</button></a>
           </div>
-        </div>
+        </section>
 
-        <div class="reveal">
-          <div class="chips" role="tablist" aria-label="Categories">
-            <button class="chip active" data-cat="All" type="button">All</button>
-            <button class="chip" data-cat="Audience" type="button">Audience</button>
-            <button class="chip" data-cat="Writing" type="button">Writing</button>
-            <button class="chip" data-cat="Business" type="button">Business</button>
-            <button class="chip" data-cat="Mindset" type="button">Mindset</button>
-          </div>
-
-          <div class="posts" id="posts">
-            <a class="postRow reveal" data-cat="Business" href="./letters/writing-tools.html" style="--i:0;">
-              <div class="postMeta"><span class="tag">Business</span><span>•</span><span>5 min</span><span class="pinned" style="margin-left:auto;">Pinned</span></div>
-              <h3 style="margin:10px 0 0;">The only writing tools I actually use</h3>
-              <div class="small" style="margin-top:6px;">A simple stack that keeps you publishing.</div>
-            </a>
-
-            <a class="postRow reveal" data-cat="Mindset" href="./letters/writing-tools.html" style="--i:1;">
-              <div class="postMeta"><span class="tag">Mindset</span><span>•</span><span>3 min</span></div>
-              <h3 style="margin:10px 0 0;">How I avoid over-optimizing</h3>
-              <div class="small" style="margin-top:6px;">Simple rules that prevent analysis paralysis.</div>
-            </a>
-
-            <a class="postRow reveal" data-cat="Audience" href="./letters/writing-tools.html" style="--i:2;">
-              <div class="postMeta"><span class="tag">Audience</span><span>•</span><span>4 min</span></div>
-              <h3 style="margin:10px 0 0;">Write for one person first</h3>
-              <div class="small" style="margin-top:6px;">Specificity scales better than you think.</div>
-            </a>
-          </div>
-        </div>
-
-        <div class="reveal">
-          <hr />
-          <div class="card">
-            <div class="kicker">Mission</div>
-            <h2 style="margin-top:10px;">Create and earn on your terms.</h2>
-            <p class="small">If you like pragmatic frameworks and zero fluff, you’ll fit right in.</p>
-            <div class="inputRow">
-              <input type="email" placeholder="you@example.com" aria-label="Email" />
-              <button type="button" onclick="alert('Placeholder. We can wire this later.')">Subscribe</button>
-            </div>
-          </div>
-
-          <div class="small" style="margin-top: var(--s-6);">
-            © <span id="y"></span> Vikamat. Built with static files.
-          </div>
-        </div>
       </div>
     </main>
   </div>
 
-  <script src="./js/reveal.js"></script>
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-<!-- Theme Toggle (self-contained, no external JS) -->
-<script>
-(function () {
-  const KEY = "vk_theme";
-  const root = document.documentElement;
-
-  function apply(theme) {
-    if (theme === "light") {
-      root.setAttribute("data-theme", "light");
-    } else {
-      root.removeAttribute("data-theme");
-    }
-  }
-
-  // Init: saved > system > default
-  const saved = localStorage.getItem(KEY);
-  if (saved) {
-    apply(saved);
-  } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-    apply("light");
-  }
-
-  // Create button dynamically (no HTML edits needed)
-  const btn = document.createElement("button");
-  btn.textContent = root.getAttribute("data-theme") === "light" ? "Dark" : "Light";
-  btn.style.width = "100%";
-  btn.style.marginTop = "18px";
-
-  btn.onclick = () => {
-    const isLight = root.getAttribute("data-theme") === "light";
-    const next = isLight ? "dark" : "light";
-    apply(next);
-    localStorage.setItem(KEY, next);
-    btn.textContent = next === "light" ? "Dark" : "Light";
-  };
-
-  // Insert button into sidebar automatically
-  const sidebar = document.querySelector(".sidebar");
-  if (sidebar) {
-    const wrap = document.createElement("div");
-    wrap.style.marginTop = "18px";
-
-    const label = document.createElement("div");
-    label.className = "small";
-    label.style.marginTop = "10px";
-    label.textContent = "Theme";
-
-    wrap.appendChild(btn);
-    wrap.appendChild(label);
-    sidebar.appendChild(wrap);
-  }
-})();
-</script>
-
-    
-    // simple category filter
-    const chips = document.querySelectorAll(".chip");
-    const posts = document.querySelectorAll(".postRow");
-    chips.forEach(chip => {
-      chip.addEventListener("click", () => {
-        chips.forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        const cat = chip.dataset.cat;
-        posts.forEach(p => {
-          p.style.display = (cat === "All" || p.dataset.cat === cat) ? "block" : "none";
-        });
-      });
-    });
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
+  <!-- Keep your existing animations -->
+  <script src="./js/reveal.js"></script>
 </body>
 </html>
-
