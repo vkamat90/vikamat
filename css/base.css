@@ -1,14 +1,20 @@
 @import url("./tokens.css");
 
+/* Load fonts (no HTML changes needed) */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap");
+
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 
 body {
   margin: 0;
-  font-family: var(--font);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
   background: var(--bg-page);
   color: var(--text-primary);
-  line-height: 1.55;
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Links */
@@ -43,17 +49,62 @@ a:hover { opacity: 0.85; }
   max-width: var(--max-content);
 }
 
-/* Type helpers */
-.small { font-size: 13px; color: rgba(255, 255, 255, 0.78); }
-.kicker { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255, 255, 255, 0.70); }
+/* Helpers */
+.small {
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.78);
+}
 
-/* Headings */
-h1 { font-size: 44px; line-height: 1.1; margin: 0 0 var(--s-4); color: #ffffff; }
-h2 { font-size: 24px; margin: var(--s-6) 0 var(--s-3); color: #ffffff; }
-h3 { font-size: 18px; margin: var(--s-5) 0 var(--s-2); color: #ffffff; }
+.kicker {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.70);
+  font-family: var(--font-body);
+  font-weight: 500;
+}
 
-/* Body text */
-p { margin: 0 0 var(--s-4); color: rgba(255, 255, 255, 0.86); }
+/* Headings (editorial) */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+h1 {
+  font-size: var(--h1);
+  line-height: var(--lh-head);
+  margin: 0 0 var(--s-4);
+}
+
+h2 {
+  font-size: var(--h2);
+  line-height: 1.18;
+  margin: var(--s-6) 0 var(--s-3);
+}
+
+h3 {
+  font-size: var(--h3);
+  line-height: 1.22;
+  margin: var(--s-5) 0 var(--s-2);
+}
+
+/* Body text (readable on dark) */
+p {
+  margin: 0 0 var(--s-4);
+  font-size: var(--text-base);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+p.small { font-size: 13px; }
+
+.lead {
+  font-size: var(--text-lead);
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.7;
+}
 
 /* Lists */
 ul, ol { color: rgba(255, 255, 255, 0.86); }
@@ -66,6 +117,7 @@ hr {
   margin: var(--s-6) 0;
 }
 
+/* Mobile */
 @media (max-width: 920px) {
   .container { grid-template-columns: 1fr; }
 
@@ -77,4 +129,6 @@ hr {
   }
 
   .main { padding: var(--s-6) var(--s-5); }
+
+  h1 { font-size: 44px; }
 }
