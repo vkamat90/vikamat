@@ -1,6 +1,4 @@
 @import url("./tokens.css");
-
-/* Load fonts (no HTML changes needed) */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap");
 
 * { box-sizing: border-box; }
@@ -10,11 +8,13 @@ body {
   margin: 0;
   font-family: var(--font-body);
   font-size: var(--text-base);
-  background: var(--bg-page);
-  color: var(--text-primary);
-  line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* The page base follows the RIGHT (light) now */
+  background: var(--main-bg);
+  color: var(--main-text);
+  line-height: var(--lh-body);
 }
 
 /* Links */
@@ -27,30 +27,29 @@ a:hover { opacity: 0.85; }
   min-height: 100vh;
 }
 
-/* LEFT: Softer */
+/* LEFT: Dark */
 .sidebar {
   position: sticky;
   top: 0;
   height: 100vh;
   padding: var(--s-6) var(--s-5);
-  border-right: 1px solid rgba(255, 255, 255, 0.22);
-  background: var(--bg-page);
-  color: rgba(255, 255, 255, 0.92);
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  border-right: 1px solid var(--sidebar-divider);
 }
 
-/* RIGHT: Darker */
-/* RIGHT: Darker (with subtle depth gradient) */
+/* RIGHT: Light (visible gradient) */
 .main {
   padding: var(--s-7) var(--s-6);
 
-  /* Layered gradients for a soft architectural depth */
+  /* Visible but tasteful light-blue depth */
   background:
-    radial-gradient(1200px 700px at 20% 10%, rgba(92, 124, 137, 0.18), transparent 55%),
-    radial-gradient(900px 600px at 85% 30%, rgba(31, 73, 89, 0.16), transparent 60%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.00) 38%),
-    var(--bg-deep);
+    radial-gradient(1200px 700px at 22% 12%, rgba(255,255,255,0.32), transparent 60%),
+    radial-gradient(1000px 700px at 80% 30%, rgba(31,73,89,0.10), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.00) 55%),
+    var(--main-bg);
 
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--main-text);
 }
 
 .content {
@@ -61,16 +60,16 @@ a:hover { opacity: 0.85; }
 .small {
   font-size: 13px;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.78);
 }
 
+/* Kicker should be subtle on light */
 .kicker {
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.70);
   font-family: var(--font-body);
   font-weight: 500;
+  color: var(--main-muted);
 }
 
 /* Headings (editorial) */
@@ -78,7 +77,7 @@ h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: -0.015em;
-  color: #ffffff;
+  color: var(--main-text);
 }
 
 h1 {
@@ -99,31 +98,33 @@ h3 {
   margin: var(--s-5) 0 var(--s-2);
 }
 
-/* Body text (readable on dark) */
+/* Body text */
 p {
   margin: 0 0 var(--s-4);
   font-size: var(--text-base);
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--main-text);
 }
-
-p.small { font-size: 13px; }
 
 .lead {
   font-size: var(--text-lead);
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(36,36,36,0.82);
   line-height: 1.7;
 }
 
 /* Lists */
-ul, ol { color: rgba(255, 255, 255, 0.86); }
+ul, ol { color: rgba(36,36,36,0.86); }
 li { margin: 6px 0; }
 
 /* Divider */
 hr {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid var(--main-divider);
   margin: var(--s-6) 0;
 }
+
+/* Sidebar-specific text tones */
+.sidebar .small { color: var(--sidebar-muted); }
+.sidebar .kicker { color: rgba(255,255,255,0.62); }
 
 /* Mobile */
 @media (max-width: 920px) {
@@ -133,10 +134,9 @@ hr {
     position: relative;
     height: auto;
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom: 1px solid var(--sidebar-divider);
   }
 
   .main { padding: var(--s-6) var(--s-5); }
-
   h1 { font-size: 44px; }
 }
