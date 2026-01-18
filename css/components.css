@@ -2,15 +2,16 @@
 .nav {
   display: flex;
   flex-direction: column;
-  gap: var(--s-3);
+  gap: 10px;
   margin-top: var(--s-5);
 }
 
 .nav a {
-  padding: 10px 12px;
-  border-radius: var(--r-1);
-  color: rgba(255, 255, 255, 0.92);
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: var(--sidebar-text);
   border: 1px solid transparent;
+  background: transparent;
   transition:
     background 180ms var(--ease),
     border-color 180ms var(--ease),
@@ -18,52 +19,42 @@
 }
 
 .nav a:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.18);
+  background: var(--nav-hover);
+  border-color: rgba(1, 20, 37, 0.08);
   transform: translateY(-1px);
 }
 
 .nav a.active {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.22);
+  background: var(--nav-active);
+  border-color: rgba(1, 20, 37, 0.10);
 }
 
 /* Brand */
-.brand {
-  display: grid;
-  gap: 6px;
-}
+.brand { display: grid; gap: 6px; }
 
 .brand .name {
-  font-weight: 700;
+  font-weight: 650;
   font-size: 18px;
-  color: #ffffff;
+  color: var(--sidebar-text);
 }
 
 .brand .role {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--sidebar-muted);
   font-size: 13px;
 }
 
 /* Social */
-.social {
-  margin-top: var(--s-6);
-  display: grid;
-  gap: 10px;
-}
+.social { margin-top: var(--s-6); display: grid; gap: 10px; }
 
-/* Cards on dark background */
+/* Cards (white on dark right) */
 .card {
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(1, 20, 37, 0.20);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   border-radius: var(--r-2);
   padding: var(--s-5);
   box-shadow: var(--shadow);
-  color: var(--text-primary);
-  transition:
-    transform 180ms var(--ease),
-    box-shadow 180ms var(--ease),
-    background 180ms var(--ease);
+  color: #242424;
+  transition: transform 180ms var(--ease), box-shadow 180ms var(--ease);
 }
 
 .card:hover {
@@ -71,20 +62,8 @@
   box-shadow: 0 18px 44px rgba(1, 20, 37, 0.26);
 }
 
-.card .small,
-.card .kicker,
-.card p,
-.card h2,
-.card h3 {
-  color: var(--text-primary);
-}
-
 /* Inputs */
-.inputRow {
-  display: flex;
-  gap: 10px;
-  margin-top: var(--s-3);
-}
+.inputRow { display: flex; gap: 10px; margin-top: var(--s-3); }
 
 input[type="email"]{
   width: 100%;
@@ -94,15 +73,12 @@ input[type="email"]{
   background: #ffffff;
   font-size: 14px;
   color: #242424;
-  transition:
-    border-color 180ms var(--ease),
-    box-shadow 180ms var(--ease),
-    transform 180ms var(--ease);
+  transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
 }
 
 input[type="email"]:focus {
   outline: none;
-  border-color: rgba(31, 73, 89, 0.60);
+  border-color: rgba(31, 73, 89, 0.55);
   box-shadow: 0 0 0 4px rgba(31, 73, 89, 0.14);
 }
 
@@ -114,10 +90,7 @@ button {
   color: #ffffff;
   font-weight: 650;
   cursor: pointer;
-  transition:
-    transform 180ms var(--ease),
-    filter 180ms var(--ease),
-    box-shadow 180ms var(--ease);
+  transition: transform 180ms var(--ease), filter 180ms var(--ease), box-shadow 180ms var(--ease);
 }
 
 button:hover {
@@ -126,17 +99,8 @@ button:hover {
   box-shadow: 0 10px 22px rgba(1, 20, 37, 0.18);
 }
 
-button:active {
-  transform: translateY(0px);
-}
-
-/* Chips (filters) */
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: var(--s-5) 0 var(--s-5);
-}
+/* Chips (stay dark-theme friendly on right) */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin: var(--s-5) 0 var(--s-5); }
 
 .chip {
   padding: 8px 12px;
@@ -146,10 +110,7 @@ button:active {
   font-size: 13px;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.92);
-  transition:
-    background 180ms var(--ease),
-    border-color 180ms var(--ease),
-    transform 180ms var(--ease);
+  transition: background 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
 }
 
 .chip:hover {
@@ -164,20 +125,14 @@ button:active {
 }
 
 /* Posts list */
-.posts {
-  display: grid;
-  gap: 14px;
-}
+.posts { display: grid; gap: 14px; }
 
 .postRow {
   padding: 18px 18px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--r-2);
   background: rgba(255, 255, 255, 0.06);
-  transition:
-    transform 200ms var(--ease),
-    background 200ms var(--ease),
-    border-color 200ms var(--ease);
+  transition: transform 200ms var(--ease), background 200ms var(--ease), border-color 200ms var(--ease);
   color: rgba(255, 255, 255, 0.92);
 }
 
@@ -187,18 +142,8 @@ button:active {
   border-color: rgba(255, 255, 255, 0.22);
 }
 
-.postMeta {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
-}
-
-.tag {
-  color: #ffffff;
-  font-weight: 700;
-}
+.postMeta { display: flex; gap: 10px; align-items: center; color: rgba(255, 255, 255, 0.72); font-size: 13px; }
+.tag { color: #ffffff; font-weight: 700; }
 
 .pinned {
   display: inline-flex;
@@ -212,7 +157,7 @@ button:active {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Reveal animation (smoother) */
+/* Reveal */
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -220,31 +165,15 @@ button:active {
   will-change: opacity, transform;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* Reading progress bar */
-.progressWrap {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 100%;
-  background: transparent;
-  z-index: 9999;
-}
-
-.progressBar {
-  height: 3px;
-  width: 0%;
-  background: var(--accent);
-}
+/* Progress bar */
+.progressWrap { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: transparent; z-index: 9999; }
+.progressBar { height: 3px; width: 0%; background: var(--accent); }
 
 /* Focus-visible (pro feel) */
 :focus-visible {
-  outline: 3px solid rgba(31, 73, 89, 0.55);
+  outline: 3px solid rgba(31, 73, 89, 0.45);
   outline-offset: 3px;
   border-radius: 10px;
 }
