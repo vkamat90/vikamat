@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Light studies: blue hour — Vi</title>
+
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="brand">
+        <a href="../index.html" style="text-decoration:none;">
+          <div class="name" style="font-family: var(--font-display); font-size:20px;">Vibhav Kamat</div>
+        </a>
+        <div class="role"><strong>Vi</strong></div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="../about.html">About</a>
+        <a href="../work.html">Work</a>
+        <a href="../life.html">Life</a>
+        <a class="active" href="../art.html">Art</a>
+        <a href="../chat.html">Let’s chat</a>
+      </nav>
+
+      <div class="social">
+        <div class="kicker">Social</div>
+        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <div class="small" style="margin-top:18px;">
+          © <span id="year"></span> Vikamat.<br/>
+          Built with AI prompts, coffee and desire to learn.
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+        <section class="reveal">
+          <div class="kicker">ART</div>
+          <h1>Light studies: blue hour</h1>
+          <p class="lead">A small study of calm, gradients, and geometry.</p>
+        </section>
+
+        <section class="reveal" style="margin-top: 28px;">
+          <div class="card" style="background:#F5F7F8;">
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80"
+              alt=""
+              style="width:100%; height:auto; border-radius: 16px; display:block; border:1px solid rgba(1,20,37,0.14);"
+            />
+            <p style="margin:14px 0 0; color:#1F4959;">
+              Placeholder art entry. Next: we’ll design the photo-essay format (caption, location, camera notes, story).
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="../js/reveal.js"></script>
+</body>
+</html>
