@@ -1,0 +1,147 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+}
+
+.nav a {
+  padding: 10px 12px;
+  border-radius: var(--r-1);
+}
+
+.nav a.active, .nav a:hover {
+  background: var(--bg-surface);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+  border: 1px solid var(--border);
+}
+
+.brand {
+  display: grid;
+  gap: 6px;
+}
+
+.brand .name { font-weight: 650; font-size: 18px; }
+.brand .role { color: var(--text-muted); font-size: 13px; }
+
+.social {
+  margin-top: var(--s-6);
+  display: grid;
+  gap: 10px;
+}
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-2);
+  padding: var(--s-5);
+  box-shadow: var(--shadow);
+}
+
+.inputRow {
+  display: flex;
+  gap: 10px;
+  margin-top: var(--s-3);
+}
+
+input[type="email"]{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: var(--r-1);
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 14px;
+}
+
+button {
+  padding: 12px 14px;
+  border-radius: var(--r-1);
+  border: 1px solid var(--border);
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover { filter: brightness(0.96); }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: var(--s-5) 0 var(--s-5);
+}
+
+.chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.chip.active {
+  border-color: transparent;
+  background: var(--accent-weak);
+}
+
+.posts {
+  display: grid;
+  gap: 14px;
+}
+
+.postRow {
+  padding: 16px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-2);
+  background: var(--bg-surface);
+  transition: transform 180ms var(--ease);
+}
+
+.postRow:hover { transform: translateY(-1px); }
+
+.postMeta { display: flex; gap: 10px; align-items: center; color: var(--text-muted); font-size: 13px; }
+.tag { color: var(--accent); font-weight: 650; }
+
+.pinned {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--accent-weak);
+  color: var(--accent);
+  border: 1px solid rgba(0,0,0,0.02);
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reading progress bar */
+.progressWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: transparent;
+  z-index: 9999;
+}
+
+.progressBar {
+  height: 3px;
+  width: 0%;
+  background: var(--accent);
+}
