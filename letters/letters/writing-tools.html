@@ -64,6 +64,61 @@
     </main>
   </div>
 
+<!-- Theme Toggle (self-contained, no external JS) -->
+<script>
+(function () {
+  const KEY = "vk_theme";
+  const root = document.documentElement;
+
+  function apply(theme) {
+    if (theme === "light") {
+      root.setAttribute("data-theme", "light");
+    } else {
+      root.removeAttribute("data-theme");
+    }
+  }
+
+  // Init: saved > system > default
+  const saved = localStorage.getItem(KEY);
+  if (saved) {
+    apply(saved);
+  } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+    apply("light");
+  }
+
+  // Create button dynamically (no HTML edits needed)
+  const btn = document.createElement("button");
+  btn.textContent = root.getAttribute("data-theme") === "light" ? "Dark" : "Light";
+  btn.style.width = "100%";
+  btn.style.marginTop = "18px";
+
+  btn.onclick = () => {
+    const isLight = root.getAttribute("data-theme") === "light";
+    const next = isLight ? "dark" : "light";
+    apply(next);
+    localStorage.setItem(KEY, next);
+    btn.textContent = next === "light" ? "Dark" : "Light";
+  };
+
+  // Insert button into sidebar automatically
+  const sidebar = document.querySelector(".sidebar");
+  if (sidebar) {
+    const wrap = document.createElement("div");
+    wrap.style.marginTop = "18px";
+
+    const label = document.createElement("div");
+    label.className = "small";
+    label.style.marginTop = "10px";
+    label.textContent = "Theme";
+
+    wrap.appendChild(btn);
+    wrap.appendChild(label);
+    sidebar.appendChild(wrap);
+  }
+})();
+</script>
+
+  
   <script src="../js/reveal.js"></script>
   <script src="../js/progress.js"></script>
 </body>
