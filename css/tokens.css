@@ -30,31 +30,35 @@
   /* Radius / shadow */
   --r-1: 10px;
   --r-2: 16px;
-  --shadow: 0 14px 34px rgba(1, 20, 37, 0.18);
+  --shadow: 0 14px 34px rgba(1, 20, 37, 0.22);
 
   /* Motion */
   --ease: cubic-bezier(.2,.8,.2,1);
   --dur: 520ms;
 
-  /* === Option 1 (inverted): DARK LEFT, LIGHT RIGHT === */
+  /* === Color System (as per your spec) === */
 
-  /* Sidebar (LEFT) */
-  --sidebar-bg: #011425;                 /* very dark navy */
-  --sidebar-text: rgba(255,255,255,0.92);
-  --sidebar-muted: rgba(255,255,255,0.72);
-  --sidebar-divider: rgba(255,255,255,0.14);
+  /* Left sidebar (tinted blue-gray) */
+  --sidebar-bg: #eaf0f3;
+  --sidebar-text: #1f4959;         /* navy-ish text */
+  --sidebar-muted: #607a86;
+  --sidebar-border: rgba(1, 20, 37, 0.10);
 
-  /* Main (RIGHT) */
-  --main-bg: #5c7c89;                    /* light-blue family anchor (visible) */
-  --main-text: #242424;                  /* near-black */
-  --main-muted: rgba(36,36,36,0.70);
-  --main-divider: rgba(1,20,37,0.12);
+  /* Nav pill states */
+  --nav-hover: #dde8ee;            /* hover light-blue */
+  --nav-active: #d2e0e8;           /* active pill */
 
-  /* Card surface on light background */
-  --bg-surface: rgba(255,255,255,0.92);
-  --border: rgba(1, 20, 37, 0.14);
+  /* Right main (dark navy) */
+  --main-bg: #011425;
+  --main-text: rgba(255,255,255,0.96);
+  --main-subtext: #5c7c89;         /* light blue subtext */
+  --main-divider: rgba(255,255,255,0.14);
 
-  /* Accent (links, buttons) */
+  /* Surfaces on dark */
+  --bg-surface: rgba(255,255,255,0.94);
+  --border: rgba(1, 20, 37, 0.16);
+
+  /* Accent */
   --accent: #1f4959;
   --accent-weak: rgba(31, 73, 89, 0.14);
 }
