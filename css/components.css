@@ -1,3 +1,4 @@
+/* Navigation */
 .nav {
   display: flex;
   flex-direction: column;
@@ -8,34 +9,47 @@
 .nav a {
   padding: 10px 12px;
   border-radius: var(--r-1);
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid transparent;
 }
 
 .nav a.active, .nav a:hover {
-  background: var(--bg-surface);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
+/* Brand */
 .brand {
   display: grid;
   gap: 6px;
 }
 
-.brand .name { font-weight: 650; font-size: 18px; }
-.brand .role { color: var(--text-muted); font-size: 13px; }
+.brand .name { font-weight: 700; font-size: 18px; color: #ffffff; }
+.brand .role { color: rgba(255, 255, 255, 0.78); font-size: 13px; }
 
+/* Social */
 .social {
   margin-top: var(--s-6);
   display: grid;
   gap: 10px;
 }
 
+/* Cards on dark background */
 .card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(1, 20, 37, 0.20);
   border-radius: var(--r-2);
   padding: var(--s-5);
   box-shadow: var(--shadow);
+  color: var(--text-primary);
+}
+
+.card .small,
+.card .kicker,
+.card p,
+.card h2,
+.card h3 {
+  color: var(--text-primary);
 }
 
 .inputRow {
@@ -44,27 +58,30 @@
   margin-top: var(--s-3);
 }
 
+/* Inputs */
 input[type="email"]{
   width: 100%;
   padding: 12px 12px;
   border-radius: var(--r-1);
-  border: 1px solid var(--border);
-  background: #fff;
+  border: 1px solid rgba(1, 20, 37, 0.22);
+  background: #ffffff;
   font-size: 14px;
+  color: #242424;
 }
 
 button {
   padding: 12px 14px;
   border-radius: var(--r-1);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(1, 20, 37, 0.22);
   background: var(--accent);
-  color: white;
-  font-weight: 600;
+  color: #ffffff;
+  font-weight: 650;
   cursor: pointer;
 }
 
 button:hover { filter: brightness(0.96); }
 
+/* Chips */
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -75,10 +92,11 @@ button:hover { filter: brightness(0.96); }
 .chip {
   padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.06);
   font-size: 13px;
   cursor: pointer;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .chip.active {
@@ -86,6 +104,7 @@ button:hover { filter: brightness(0.96); }
   background: var(--accent-weak);
 }
 
+/* Posts list */
 .posts {
   display: grid;
   gap: 14px;
@@ -93,16 +112,17 @@ button:hover { filter: brightness(0.96); }
 
 .postRow {
   padding: 16px 16px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--r-2);
-  background: var(--bg-surface);
-  transition: transform 180ms var(--ease);
+  background: rgba(255, 255, 255, 0.06);
+  transition: transform 180ms var(--ease), background 180ms var(--ease);
+  color: rgba(255, 255, 255, 0.92);
 }
 
-.postRow:hover { transform: translateY(-1px); }
+.postRow:hover { transform: translateY(-1px); background: rgba(255, 255, 255, 0.09); }
 
-.postMeta { display: flex; gap: 10px; align-items: center; color: var(--text-muted); font-size: 13px; }
-.tag { color: var(--accent); font-weight: 650; }
+.postMeta { display: flex; gap: 10px; align-items: center; color: rgba(255, 255, 255, 0.72); font-size: 13px; }
+.tag { color: #ffffff; font-weight: 700; }
 
 .pinned {
   display: inline-flex;
@@ -111,9 +131,9 @@ button:hover { filter: brightness(0.96); }
   font-size: 12px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: var(--accent-weak);
-  color: var(--accent);
-  border: 1px solid rgba(0,0,0,0.02);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Reveal animation */
