@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Life — Vibhav Kamat</title>
+
+  <link rel="stylesheet" href="./css/tokens.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="brand">
+        <a href="./index.html" style="text-decoration:none;">
+          <div class="name" style="font-family: var(--font-display); font-size:20px;">
+            Vibhav Kamat
+          </div>
+        </a>
+        <div class="role"><strong>Vi</strong></div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="./about.html">About</a>
+        <a href="./work.html">Work</a>
+        <a class="active" href="./life.html">Life</a>
+        <a href="./art.html">Art</a>
+        <a href="./chat.html">Let’s chat</a>
+      </nav>
+
+      <div class="social">
+        <div class="kicker">Social</div>
+        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">LinkedIn</a>
+
+        <div class="small" style="margin-top:18px;">
+          © <span id="year"></span> Vikamat.<br/>
+          Built with AI prompts, coffee and desire to learn.
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="content">
+        <section class="reveal">
+          <h1>Life</h1>
+          <p class="lead">
+            Reflections, constraints, habits, and learning — written for humans, not algorithms.
+          </p>
+        </section>
+
+        <section class="reveal" style="margin-top: 28px;">
+          <div class="posts">
+            <div class="postRow">
+              <div class="postMeta">
+                <span class="tag">Life</span>
+                <span>Placeholder</span>
+              </div>
+              <h3 style="margin:10px 0 6px; color:#fff;">Life posts will live here</h3>
+              <div class="small">Next step: load your Life-tagged entries and render them cleanly.</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="./js/reveal.js"></script>
+</body>
+</html>
