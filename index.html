@@ -14,7 +14,7 @@
   <div class="container">
     <!-- LEFT: Sticky Navigation -->
     <aside class="sidebar">
-      <!-- Monogram / Identity (acts as Home) -->
+      <!-- Identity (acts as Home) -->
       <div class="brand">
         <a href="./index.html" style="text-decoration:none;">
           <div class="name" style="font-family: var(--font-display); font-size:20px;">
@@ -101,66 +101,92 @@
           </div>
         </section>
 
-        <!-- Mentorship CTA (wireframe placeholder) -->
-       <section class="reveal" style="margin-top: 28px;">
-  <div class="card" style="background:#F5F7F8;">
-    <h3 style="margin:0 0 10px; color:#011425;">
-      If you’re building something, let’s talk.
-    </h3>
+        <!-- Home Tabs: Build / Live / See -->
+        <section class="reveal" style="margin-top: 28px;">
+          <div class="kicker">Browse</div>
+          <h2 style="margin-top:10px;">Build. Live. See.</h2>
 
-    <p style="margin:0 0 12px; color:#1F4959;">
-      Whether you're someone looking for career advice, someone who wants to pick my
-      brains on an exciting project, someone who just needs to talk, or someone who
-      wants to bounce off an idea — I’m happy to connect where there’s mutual learning.
-    </p>
+          <div class="chips" style="margin-top: 14px;">
+            <button class="chip active" type="button" data-home-tab="work">Build</button>
+            <button class="chip" type="button" data-home-tab="life">Live</button>
+            <button class="chip" type="button" data-home-tab="art">See</button>
+          </div>
 
-    <p class="small" style="margin:0 0 18px; color:#5C7C89;">
-      Note: If you are trying to sell me something, please don’t.
-      I started my career as a salesman and I can smell it.
-    </p>
+          <div class="posts" id="homePosts"></div>
+        </section>
 
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            var mountId = "homePosts";
+            var current = "work";
 
+            function setActive(tab) {
+              document.querySelectorAll("[data-home-tab]").forEach(function (b) {
+                b.classList.toggle("active", b.getAttribute("data-home-tab") === tab);
+              });
+            }
 
+            function render(tab) {
+              if (typeof window.VK_RENDER_POSTS !== "function") return;
 
-    
-    <a href="./chat.html">
-      <button type="button">Let’s chat</button>
-    </a>
+              window.VK_RENDER_POSTS({ mountId: mountId, filterTag: tab });
+
+              // Keep homepage concise
+              var mount = document.getElementById(mountId);
+              if (mount) {
+                Array.from(mount.querySelectorAll("a.postRow"))
+                  .slice(4)
+                  .forEach(function (n) { n.remove(); });
+              }
+            }
+
+            document.querySelectorAll("[data-home-tab]").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                current = btn.getAttribute("data-home-tab");
+                setActive(current);
+                render(current);
+              });
+            });
+
+            setActive(current);
+            render(current);
+          });
+        </script>
+
+        <!-- Mentorship CTA -->
+        <section class="reveal" style="margin-top: 28px;">
+          <div class="card" style="background:#F5F7F8;">
+            <h3 style="margin:0 0 10px; color:#011425;">
+              If you’re building something, let’s talk.
+            </h3>
+
+            <p style="margin:0 0 12px; color:#1F4959;">
+              Whether you're someone looking for career advice, someone who wants to pick my
+              brains on an exciting project, someone who just needs to talk, or someone who
+              wants to bounce off an idea — I’m happy to connect where there’s mutual learning.
+            </p>
+
+            <p class="small" style="margin:0 0 18px; color:#5C7C89;">
+              Note: If you are trying to sell me something, please don’t.
+              I started my career as a salesman and I can smell it.
+            </p>
+
+            <a href="./chat.html">
+              <button type="button">Let’s chat</button>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </main>
   </div>
-</section>
-
-
-            <section class="reveal" style="margin-top: 28px;">
-  <div class="kicker">Latest</div>
-  <h2 style="margin-top:10px;">Recent notes across Work, Life, and Art.</h2>
-
-  <div class="posts" id="postsMountHome" data-posts-mount data-filter=""></div>
-</section>
-
-<script>
-  // Render Top 3 posts on Home once posts.js is available
-  document.addEventListener("DOMContentLoaded", function () {
-    if (typeof window.VK_RENDER_POSTS === "function") {
-      // Render all, then slice by DOM (cheapest, no framework)
-      window.VK_RENDER_POSTS({ mountId: "postsMountHome", filterTag: null });
-
-      // Keep only first 3 cards
-      const mount = document.getElementById("postsMountHome");
-      if (mount) {
-        const cards = Array.from(mount.querySelectorAll("a.postRow"));
-        cards.slice(3).forEach(n => n.remove());
-      }
-    }
-  });
-</script>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
   <script src="./js/reveal.js"></script>
-        <script src="./data/posts.js"></script>
-<script src="./js/posts.js"></script>
-
+  <script src="./data/posts.js"></script>
+  <script src="./js/posts.js"></script>
 </body>
 </html>
