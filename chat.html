@@ -13,36 +13,7 @@
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
     data-cf-beacon='{"token":"ba6df2a0397d42bd9c072756f467bf76"}'></script>
 
-  <!-- Cal.com Embed Loader -->
-  <script>
-    (function (C, A, L) {
-      let p = function (a, ar) { a.q.push(ar); };
-      let d = C.document;
-      C.Cal = C.Cal || function () {
-        let cal = C.Cal;
-        let ar = arguments;
-        if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
-          d.head.appendChild(d.createElement("script")).src = A;
-          cal.loaded = true;
-        }
-        if (ar[0] === L) {
-          const api = function () { p(api, arguments); };
-          const namespace = ar[1];
-          api.q = api.q || [];
-          typeof namespace === "string" ? (cal.ns[namespace] = api) : p(cal, ar);
-          return;
-        }
-        p(cal, ar);
-      };
-    })(window, "https://app.cal.com/embed/embed.js", "init");
-
-    Cal("init", "booking", { origin: "https://cal.com" });
-  </script>
-
   <style>
-    /* Ensures the embedded scheduler feels "native" inside your dark panel */
     .embedShell{
       margin-top: 20px;
       border-radius: 24px;
@@ -50,8 +21,20 @@
       border: 1px solid rgba(255,255,255,0.14);
       box-shadow: 0 14px 30px rgba(0,0,0,0.18);
       background: #ffffff;
-      min-height: 720px;
+      min-height: 780px;
     }
+    #cal-embed {
+      width: 100%;
+      min-height: 780px;
+    }
+    .embedFallback {
+      padding: 18px 18px 22px;
+      color: #011425;
+      font-size: 14px;
+      line-height: 1.45;
+      display: none;
+    }
+    .embedFallback a { text-decoration: underline; }
   </style>
 </head>
 
@@ -64,7 +47,6 @@
           <a href="./index.html" class="brandLink">
             <div class="nameLine">Vibhav <span class="vi">"Vi"</span></div>
           </a>
-
           <div class="introLine1">Product | Marketing | Growth</div>
           <div class="introLine2">Lifelong learner, Always curious, Rarely offended</div>
         </div>
@@ -82,16 +64,12 @@
         <div class="kickerLeft">Find Me</div>
 
         <a class="findLink" href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
-          <span class="left">
-            <span class="findLabel">LinkedIn</span>
-          </span>
+          <span class="left"><span class="findLabel">LinkedIn</span></span>
           <span class="ext">↗</span>
         </a>
 
         <a class="findLink" href="mailto:letsconnectwithvi@gmail.com">
-          <span class="left">
-            <span class="findLabel">Email me</span>
-          </span>
+          <span class="left"><span class="findLabel">Email me</span></span>
         </a>
 
         <div class="footerNote">
@@ -117,11 +95,15 @@
           <h2 class="sectionTitle" style="margin-top:10px;">Let’s chat for 25 mins</h2>
 
           <div class="embedShell">
-            <!-- Cal.com embed mount -->
-            <div
-              data-cal-link="vikamat/lets-chat-for-25-mins"
-              data-cal-config='{"layout":"month_view"}'
-              style="min-height:720px;">
+            <!-- Deterministic mount point -->
+            <div id="cal-embed"></div>
+
+            <!-- Fallback if the embed fails (rare, but keeps UX intact) -->
+            <div id="cal-fallback" class="embedFallback">
+              If the scheduler didn’t load, open it directly:
+              <a href="https://cal.com/vikamat/lets-chat-for-25-mins" target="_blank" rel="noreferrer">
+                https://cal.com/vikamat/lets-chat-for-25-mins
+              </a>
             </div>
           </div>
         </section>
@@ -131,6 +113,60 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Cal.com Embed (reliable inline mount) -->
+  <script>
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "Cal");
+  </script>
+
+  <script>
+    // Mount after DOM is ready + embed.js is available
+    document.addEventListener("DOMContentLoaded", function () {
+      const mount = document.getElementById("cal-embed");
+      const fallback = document.getElementById("cal-fallback");
+
+      // Load + init
+      try {
+        Cal("init", { origin: "https://cal.com" });
+
+        // Optional UI polish (safe defaults)
+        Cal("ui", {
+          theme: "light",
+          styles: { branding: { brandColor: "#1F4959" } }
+        });
+
+        // Deterministic inline mount
+        Cal("inline", {
+          elementOrSelector: "#cal-embed",
+          calLink: "vikamat/lets-chat-for-25-mins",
+          layout: "month_view"
+        });
+
+        // If nothing renders after a short delay, show fallback link
+        setTimeout(function () {
+          // If iframe didn't mount, show fallback
+          const hasIframe = mount && mount.querySelector("iframe");
+          if (!hasIframe && fallback) fallback.style.display = "block";
+        }, 2500);
+      } catch (e) {
+        if (fallback) fallback.style.display = "block";
+      }
+    });
   </script>
 </body>
 </html>
