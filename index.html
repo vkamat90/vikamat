@@ -281,5 +281,18 @@
   <!-- Cloudflare Web Analytics (replace token) -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token":"YOUR_CLOUDFLARE_TOKEN"}'></script>
+
+  <script src="./data/posts.js"></script>
+<script src="./js/posts.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initial render: Build
+    if (typeof window.VK_RENDER_POSTS === "function") {
+      window.VK_RENDER_POSTS({ mountId: "homePosts", filterTag: "work" });
+    }
+  });
+</script>
+  
 </body>
 </html>
