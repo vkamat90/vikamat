@@ -8,77 +8,20 @@
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
-
-  <style>
-    .brandRow{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .navToggle{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:38px;
-      height:38px;
-      border-radius:12px;
-      border:1px solid rgba(1,20,37,0.12);
-      background:rgba(255,255,255,0.7);
-      cursor:pointer;
-      flex: 0 0 auto;
-    }
-    .navToggle:hover{ background:rgba(255,255,255,0.9); }
-    .navToggle svg{ width:18px; height:18px; stroke:rgba(1,20,37,0.75); }
-
-    html.nav-collapsed .container{ grid-template-columns:92px 1fr; }
-    html.nav-collapsed .brand .nameLine,
-    html.nav-collapsed .brand .introLine1,
-    html.nav-collapsed .brand .introLine2{ display:none; }
-    html.nav-collapsed .nav a{ justify-content:center; font-size:0; }
-    html.nav-collapsed .nav a svg{ margin:0; }
-    html.nav-collapsed .findme .kicker,
-    html.nav-collapsed .findme .footerNote,
-    html.nav-collapsed .findme a .left span,
-    html.nav-collapsed .findme a .ext{ display:none; }
-    html.nav-collapsed .findme a{ justify-content:center; }
-
-    .nav svg, .findme svg{
-      width:18px; height:18px; flex:0 0 18px; display:block; stroke:currentColor;
-    }
-
-    /* Fixed hero without any box behind it */
-    .heroFixed{
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      padding-top: 10px;
-      padding-bottom: 16px;
-      background: transparent;
-      backdrop-filter: none;
-    }
-
-    .belowHero{ margin-top: 18px; }
-  </style>
 </head>
 
 <body>
   <div class="container">
+    <!-- LEFT NAV -->
     <aside class="sidebar">
       <div class="brandRow">
         <div class="brand">
-          <a href="./index.html" style="text-decoration:none;">
-            <div class="nameLine" style="font-family: var(--font-display); font-weight:700; font-size:20px; color: var(--c-ink);">
-              Vibhav <span style="font-weight:800;">"Vi"</span>
-            </div>
+          <a href="./index.html" class="brandLink">
+            <div class="nameLine">Vibhav <span class="vi">"Vi"</span></div>
           </a>
 
-          <div class="introLine1" style="margin-top:6px; font-size:13px; color: rgba(1,20,37,0.66); line-height:1.35;">
-            Product | Marketing | Growth
-          </div>
-          <div class="introLine2" style="font-size:13px; color: rgba(1,20,37,0.66); line-height:1.35;">
-            Lifelong learner, Always curious, Rarely offended
-          </div>
+          <div class="introLine1">Product | Marketing | Growth</div>
+          <div class="introLine2">Lifelong learner, Always curious, Rarely offended</div>
         </div>
 
         <button class="navToggle" id="navToggle" aria-label="Toggle navigation">
@@ -94,21 +37,21 @@
             <circle cx="12" cy="8" r="4"></circle>
             <path d="M4 21c1.5-4 14.5-4 16 0"></path>
           </svg>
-          About
+          <span class="navLabel">About</span>
         </a>
 
         <a href="./work.html">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2l-3 7h4l-1 7 5-9h-4l1-5z"></path>
           </svg>
-          Build
+          <span class="navLabel">Build</span>
         </a>
 
         <a href="./life.html">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 21s-8-5-9-9a5 5 0 0 1 9-4 5 5 0 0 1 9 4c-1 4-9 9-9 9z"></path>
           </svg>
-          Live
+          <span class="navLabel">Live</span>
         </a>
 
         <a href="./art.html">
@@ -116,14 +59,14 @@
             <circle cx="12" cy="12" r="9"></circle>
             <path d="M3 12h18"></path>
           </svg>
-          See
+          <span class="navLabel">See</span>
         </a>
       </nav>
 
       <div class="findme">
-        <div class="kicker">Find Me</div>
+        <div class="kickerLeft">Find Me</div>
 
-        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
+        <a class="findLink" href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
           <span class="left">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="9" width="4" height="12"></rect>
@@ -132,27 +75,27 @@
               <path d="M14 9v12"></path>
               <path d="M14 14a5 5 0 0 1 8 0v7"></path>
             </svg>
-            <span>LinkedIn</span>
+            <span class="findLabel">LinkedIn</span>
           </span>
           <span class="ext">↗</span>
         </a>
 
-        <a href="./chat.html">
+        <a class="findLink" href="./chat.html">
           <span class="left">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
             </svg>
-            <span>Let’s chat</span>
+            <span class="findLabel">Let’s chat</span>
           </span>
         </a>
 
-        <a href="mailto:letsconnectwithvi@gmail.com">
+        <a class="findLink" href="mailto:letsconnectwithvi@gmail.com">
           <span class="left">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="4" width="20" height="16"></rect>
               <path d="M22 6l-10 7L2 6"></path>
             </svg>
-            <span>Email me</span>
+            <span class="findLabel">Email me</span>
           </span>
         </a>
 
@@ -163,44 +106,50 @@
       </div>
     </aside>
 
+    <!-- RIGHT MAIN -->
     <main class="main">
       <div class="content">
+        <!-- Fixed hero -->
         <section class="heroFixed">
           <h1>Every breakthrough begins with a <em>question</em>.</h1>
-          <p class="lead">“Be curious, not judgemental.” — Ted Lasso</p>
+          <p class="quote">“Be curious, not judgemental.” — Ted Lasso</p>
         </section>
 
-        <section class="reveal belowHero">
+        <!-- Browse + Tabs + Posts -->
+        <section class="belowHero">
           <div class="kicker">Browse</div>
-          <h2>Build. Live. See.</h2>
+          <h2 class="sectionTitle">Build. Live. See.</h2>
 
-          <div class="chips" style="margin-top:14px;">
+          <div class="chips">
             <button class="chip active" type="button" data-home-tab="work">Build</button>
             <button class="chip" type="button" data-home-tab="life">Live</button>
             <button class="chip" type="button" data-home-tab="art">See</button>
           </div>
 
-          <div class="posts" id="homePosts" style="margin-top:14px;"></div>
+          <div class="posts" id="homePosts"></div>
         </section>
       </div>
     </main>
   </div>
 
   <script>
+    // Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const key = "vk_nav_collapsed";
+    // Sidebar collapse (RESET KEY so you don't inherit your old collapsed state)
+    const KEY = "vk_nav_collapsed_v2";
     const root = document.documentElement;
-    const toggleBtn = document.getElementById("navToggle");
+    const btn = document.getElementById("navToggle");
 
-    if (localStorage.getItem(key) === "1") root.classList.add("nav-collapsed");
+    if (localStorage.getItem(KEY) === "1") root.classList.add("nav-collapsed");
 
-    toggleBtn.addEventListener("click", function () {
+    btn.addEventListener("click", () => {
       root.classList.toggle("nav-collapsed");
-      localStorage.setItem(key, root.classList.contains("nav-collapsed") ? "1" : "0");
+      localStorage.setItem(KEY, root.classList.contains("nav-collapsed") ? "1" : "0");
     });
   </script>
 
+  <!-- IMPORTANT: Order matters -->
   <script src="./data/posts.js"></script>
   <script src="./js/posts.js"></script>
 
@@ -208,11 +157,16 @@
     document.addEventListener("DOMContentLoaded", function () {
       const mountId = "homePosts";
 
-      function render(tag){
+      function render(tag) {
         if (typeof window.VK_RENDER_POSTS === "function") {
           window.VK_RENDER_POSTS({ mountId, filterTag: tag });
-          const cards = Array.from(document.querySelectorAll("#homePosts .postRow"));
+
+          // Keep homepage tight: show max 4 cards
+          const cards = Array.from(document.querySelectorAll("#homePosts a.postRow"));
           cards.slice(4).forEach(n => n.remove());
+        } else {
+          const mount = document.getElementById(mountId);
+          if (mount) mount.innerHTML = '<div class="emptyState">Renderer not loaded (js/posts.js).</div>';
         }
       }
 
@@ -220,7 +174,9 @@
         btn.addEventListener("click", function () {
           document.querySelectorAll("[data-home-tab]").forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
-          render(btn.dataset.homeTab === "work" ? "work" : btn.dataset.homeTab === "life" ? "life" : "art");
+
+          const key = btn.dataset.homeTab;
+          render(key === "work" ? "work" : key === "life" ? "life" : "art");
         });
       });
 
@@ -228,6 +184,7 @@
     });
   </script>
 
+  <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token":"YOUR_CLOUDFLARE_TOKEN"}'></script>
 </body>
