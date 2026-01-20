@@ -5,56 +5,117 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vikamat — Vibhav Kamat</title>
 
+  <!-- Core site styles -->
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
+
+  <!-- Sidebar collapse (self-contained, homepage-only) -->
+  <style>
+    .brandRow{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .navToggle{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      border:1px solid rgba(1,20,37,0.12);
+      background:rgba(255,255,255,0.7);
+      cursor:pointer;
+    }
+
+    .navToggle svg{
+      width:18px;
+      height:18px;
+      stroke:rgba(1,20,37,0.75);
+    }
+
+    html.nav-collapsed .container{
+      grid-template-columns:92px 1fr;
+    }
+
+    html.nav-collapsed .brand .name,
+    html.nav-collapsed .brand .handle,
+    html.nav-collapsed .brand .intro{
+      display:none;
+    }
+
+    html.nav-collapsed .nav a{
+      justify-content:center;
+      font-size:0;
+    }
+
+    html.nav-collapsed .nav a svg{
+      margin:0;
+    }
+
+    html.nav-collapsed .findme .kicker,
+    html.nav-collapsed .findme .footerNote,
+    html.nav-collapsed .findme a .left span,
+    html.nav-collapsed .findme a .ext{
+      display:none;
+    }
+
+    html.nav-collapsed .findme a{
+      justify-content:center;
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
+    <!-- LEFT NAV -->
     <aside class="sidebar">
-      <div class="brand">
-        <a href="./index.html" style="text-decoration:none;">
-          <div class="name">Vibhav</div>
-        </a>
-        <div class="handle">Vi</div>
-        <div class="intro">Product and Growth Leader | Lifelong Learner</div>
+      <div class="brandRow">
+        <div class="brand">
+          <a href="./index.html" style="text-decoration:none;">
+            <div class="name">Vibhav</div>
+          </a>
+          <div class="handle">Vi</div>
+          <div class="intro">Product and Growth Leader | Lifelong Learner</div>
+        </div>
+
+        <button class="navToggle" id="navToggle" aria-label="Toggle navigation">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"></path>
+          </svg>
+        </button>
       </div>
 
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav">
         <a href="./about.html">
-          <!-- About icon -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20 21a8 8 0 0 0-16 0"></path>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
             <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 21c1.5-4 14.5-4 16 0"></path>
           </svg>
           About
         </a>
 
         <a href="./work.html">
-          <!-- Build icon (bolt/hand vibe) -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
             <path d="M12 2l-3 7h4l-1 7 5-9h-4l1-5z"></path>
-            <path d="M3 20h18"></path>
           </svg>
           Build
         </a>
 
         <a href="./life.html">
-          <!-- Live icon (heart) -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 21s-7-4.6-9.5-8.6C.5 8.8 2.7 6 5.9 6c1.7 0 3.2.8 4.1 2 0 0 1.6-2 4.1-2 3.2 0 5.4 2.8 3.4 6.4C19 16.4 12 21 12 21z"></path>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <path d="M12 21s-8-5-9-9a5 5 0 0 1 9-4 5 5 0 0 1 9 4c-1 4-9 9-9 9z"></path>
           </svg>
           Live
         </a>
 
         <a href="./art.html">
-          <!-- See icon (globe/eye vibe) -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
             <circle cx="12" cy="12" r="9"></circle>
             <path d="M3 12h18"></path>
-            <path d="M12 3a14 14 0 0 1 0 18"></path>
-            <path d="M12 3a14 14 0 0 0 0 18"></path>
           </svg>
           See
         </a>
@@ -63,34 +124,34 @@
       <div class="findme">
         <div class="kicker">Find Me</div>
 
-        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
+        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank">
           <span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
               <rect x="2" y="9" width="4" height="12"></rect>
               <circle cx="4" cy="4" r="2"></circle>
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2"></path>
             </svg>
-            LinkedIn
+            <span>LinkedIn</span>
           </span>
           <span class="ext">↗</span>
         </a>
 
         <a href="./chat.html">
           <span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
               <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
             </svg>
-            Let’s chat
+            <span>Let’s chat</span>
           </span>
         </a>
 
         <a href="mailto:letsconnectwithvi@gmail.com">
           <span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 4h16v16H4z"></path>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+              <rect x="2" y="4" width="20" height="16"></rect>
               <path d="M22 6l-10 7L2 6"></path>
             </svg>
-            Send me an e-mail
+            <span>Email me</span>
           </span>
         </a>
 
@@ -101,6 +162,7 @@
       </div>
     </aside>
 
+    <!-- MAIN -->
     <main class="main">
       <div class="content">
         <section class="reveal">
@@ -108,118 +170,63 @@
           <p class="lead">“Be curious, not judgemental.” — Ted Lasso</p>
         </section>
 
-        <section class="reveal" style="margin-top: 28px;">
-          <div class="posts">
-            <a class="postRow" href="./work.html">
-              <div class="postMeta">
-                <span class="tag">Build</span>
-                <span>Experiments • Outcomes • Product leadership</span>
-              </div>
-              <h3 style="margin:10px 0 6px; color:#fff;">Build credibility through real decisions.</h3>
-              <div class="small">Writing on products, growth, systems, and the “why” behind the work.</div>
-            </a>
+        <section class="reveal" style="margin-top:28px;">
+          <div class="kicker">Browse</div>
+          <h2>Build. Live. See.</h2>
 
-            <a class="postRow" href="./life.html">
-              <div class="postMeta">
-                <span class="tag">Live</span>
-                <span>Habits • Reflections • Becoming</span>
-              </div>
-              <h3 style="margin:10px 0 6px; color:#fff;">Document the human behind the resume.</h3>
-              <div class="small">Notes on energy, health, constraints, and learning in public.</div>
-            </a>
-
-            <a class="postRow" href="./art.html">
-              <div class="postMeta">
-                <span class="tag">See</span>
-                <span>Photography • Visual storytelling</span>
-              </div>
-              <h3 style="margin:10px 0 6px; color:#fff;">Images that carry meaning.</h3>
-              <div class="small">Photo-led entries. Quiet moments. Travel. Light. Composition.</div>
-            </a>
-          </div>
-        </section>
-
-        <section class="reveal" style="margin-top: 28px;">
-          <div class="kicker" style="opacity:0.8; letter-spacing:0.16em; text-transform:uppercase; font-size:11px;">
-            Browse
-          </div>
-          <h2 style="margin-top:10px;">Build | Live | See</h2>
-
-          <div class="chips" style="margin-top: 14px;">
-            <button class="chip active" type="button" data-home-tab="work">Build</button>
-            <button class="chip" type="button" data-home-tab="life">Live</button>
-            <button class="chip" type="button" data-home-tab="art">See</button>
+          <div class="chips" style="margin-top:14px;">
+            <button class="chip active" data-home-tab="work">Build</button>
+            <button class="chip" data-home-tab="life">Live</button>
+            <button class="chip" data-home-tab="art">See</button>
           </div>
 
           <div class="posts" id="homePosts" style="margin-top:14px;"></div>
-        </section>
-
-        <section class="reveal" style="margin-top: 28px;">
-          <div class="card" style="background: var(--c-card);">
-            <h3 style="margin:0 0 10px; color: var(--c-ink);">If you’re building something, let’s talk.</h3>
-
-            <p style="margin:0 0 12px; color: var(--c-ink-2);">
-              Whether you're someone looking for career advice, someone who wants to pick my brains on an exciting project,
-              someone who just needs to talk, or someone who wants to bounce off an idea — I’m happy to connect where there’s mutual learning.
-            </p>
-
-            <p class="small" style="margin:0 0 18px; color: var(--c-mist);">
-              Note: If you are trying to sell me something, please don’t.
-              I started my career as a salesman and I can smell it.
-            </p>
-
-            <a href="./chat.html"><button type="button">Let’s chat</button></a>
-          </div>
         </section>
       </div>
     </main>
   </div>
 
+  <!-- Sidebar toggle logic -->
   <script>
+    const key = "vk_nav_collapsed";
+    const root = document.documentElement;
+    const btn = document.getElementById("navToggle");
+
+    if(localStorage.getItem(key)==="1"){ root.classList.add("nav-collapsed"); }
+
+    btn.onclick = () => {
+      root.classList.toggle("nav-collapsed");
+      localStorage.setItem(key, root.classList.contains("nav-collapsed") ? "1" : "0");
+    };
+
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <script src="./js/reveal.js"></script>
+  <!-- Content engine -->
   <script src="./data/posts.js"></script>
   <script src="./js/posts.js"></script>
 
   <script>
-    // Home tab switcher -> uses your existing VK_RENDER_POSTS
-    document.addEventListener("DOMContentLoaded", function () {
-      var mountId = "homePosts";
-      var current = "work";
-
-      function setActive(tab) {
-        document.querySelectorAll("[data-home-tab]").forEach(function (b) {
-          b.classList.toggle("active", b.getAttribute("data-home-tab") === tab);
-        });
+    document.addEventListener("DOMContentLoaded", function(){
+      let current="work";
+      function render(tab){
+        VK_RENDER_POSTS({ mountId:"homePosts", filterTag:tab });
+        [...document.querySelectorAll("#homePosts .postRow")].slice(4).forEach(n=>n.remove());
       }
-
-      function render(tab) {
-        if (typeof window.VK_RENDER_POSTS !== "function") return;
-
-        window.VK_RENDER_POSTS({ mountId: mountId, filterTag: tab });
-
-        // Keep homepage concise
-        var mount = document.getElementById(mountId);
-        if (mount) {
-          Array.from(mount.querySelectorAll("a.postRow"))
-            .slice(4)
-            .forEach(function (n) { n.remove(); });
-        }
-      }
-
-      document.querySelectorAll("[data-home-tab]").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          current = btn.getAttribute("data-home-tab");
-          setActive(current);
+      document.querySelectorAll("[data-home-tab]").forEach(b=>{
+        b.onclick=()=>{
+          document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+          b.classList.add("active");
+          current=b.dataset.homeTab;
           render(current);
-        });
+        };
       });
-
-      setActive(current);
       render(current);
     });
   </script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"YOUR_CLOUDFLARE_TOKEN"}'></script>
 </body>
 </html>
