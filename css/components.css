@@ -1,117 +1,84 @@
-/* css/components.css */
+/* css/components.css
+   Component-level styles (cards, nav, chips, utilities)
+*/
 
-.container{
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  min-height: 100vh;
-}
-
+/* ---------- Sidebar / Nav ---------- */
 .sidebar{
   position: sticky;
   top: 0;
-  align-self: start;
   height: 100vh;
-  padding: 24px 18px;
-  background: var(--c-sidebar);
-  border-right: 1px solid rgba(1,20,37,0.10);
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: #FFFFFF;
+  border-right: 1px solid rgba(1,20,37,0.08);
 }
 
 .brand{
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 10px 10px 14px;
+  gap: 2px;
 }
 
-.brand .name{
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  color: var(--c-ink);
-  line-height: 1.15;
-}
-
-.brand .handle{
-  font-weight: 800;
-  color: var(--c-ink);
-  font-size: 14px;
-  margin-top: -2px;
-}
-
-.brand .intro{
-  color: rgba(1,20,37,0.66);
-  font-size: 13px;
-  line-height: 1.35;
-}
-
-/* Primary nav */
 .nav{
-  margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 6px 10px;
+  margin-top: 8px;
 }
 
 .nav a{
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 12px 12px;
   border-radius: 14px;
   text-decoration: none;
   color: rgba(1,20,37,0.78);
-  font-weight: 600;
+  font-weight: 650;
+  border: 1px solid transparent;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
 .nav a:hover{
-  background: rgba(92,124,137,0.20);
-  color: var(--c-ink);
+  background: rgba(92,124,137,0.18);
+  border-color: rgba(1,20,37,0.10);
 }
 
-.nav a.active{
-  background: rgba(92,124,137,0.28);
-  color: var(--c-ink);
-  box-shadow: inset 0 0 0 1px rgba(1,20,37,0.08);
-}
-
-.nav a svg{
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  opacity: 0.95;
-}
-
-/* Find Me section */
 .findme{
-  margin-top: 18px;
-  padding: 10px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
 }
 
 .findme .kicker{
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(1,20,37,0.55);
-  margin: 10px 0 10px;
+  margin-bottom: 4px;
 }
 
 .findme a{
   display:flex;
   align-items:center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   padding: 10px 12px;
   border-radius: 14px;
   text-decoration:none;
   color: rgba(1,20,37,0.78);
-  font-weight: 600;
+  border: 1px solid rgba(1,20,37,0.08);
+  background: rgba(1,20,37,0.02);
+  transition: background 160ms ease, border-color 160ms ease;
 }
 
 .findme a:hover{
-  background: rgba(92,124,137,0.20);
-  color: var(--c-ink);
+  background: rgba(92,124,137,0.18);
+  border-color: rgba(1,20,37,0.12);
 }
 
 .findme a .left{
@@ -120,263 +87,144 @@
   gap: 10px;
 }
 
-.findme a svg{
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-}
-
-.findme a .ext{
-  opacity: 0.6;
-}
-
-.footerNote{
+.findme .footerNote{
+  margin-top: 10px;
   font-size: 12px;
   color: rgba(1,20,37,0.60);
-  margin-top: 16px;
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
-/* Main */
+/* ---------- Main / Content ---------- */
 .main{
-  background: radial-gradient(1200px 500px at 30% 0%, rgba(92,124,137,0.35), rgba(1,20,37,0.0)),
-              linear-gradient(180deg, rgba(1,20,37,1), rgba(1,20,37,1));
-  color: #fff;
+  min-height: 100vh;
 }
 
 .content{
   max-width: 980px;
-  padding: 34px 36px;
+  padding: 34px 38px 60px;
 }
 
-/* Headline typography (Skylar-like) */
-h1{
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.02;
-  font-size: clamp(40px, 6vw, 68px);
-  margin: 0 0 12px;
-}
-
-h1 em{
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-}
-
-h2{
-  font-family: var(--font-display);
-  font-weight: 650;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin: 0;
+.kicker{
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.66);
 }
 
 .lead{
-  font-size: 18px;
   color: rgba(255,255,255,0.82);
-  line-height: 1.55;
-  max-width: 68ch;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-top: 8px;
 }
 
-/* Cards/posts */
-.posts{
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.postRow{
-  display:block;
-  text-decoration:none;
-  color: inherit;
-  padding: 18px;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(255,255,255,0.06);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.20);
-}
-
-.postRow:hover{
-  transform: translateY(-1px);
-  transition: 180ms ease;
-  background: rgba(255,255,255,0.08);
-}
-
-.postMeta{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  color: rgba(255,255,255,0.70);
-  font-size: 12px;
-}
-
-.tag{
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.86);
-  font-weight: 650;
-  letter-spacing: 0.02em;
-}
-
-/* Pills/tabs */
+/* ---------- Chips ---------- */
 .chips{
   display:flex;
-  gap:10px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .chip{
-  appearance:none;
+  appearance: none;
   border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.08);
   color: rgba(255,255,255,0.86);
   padding: 10px 14px;
   border-radius: 999px;
-  font-family: var(--font-body);
-  font-weight: 650;
   cursor:pointer;
+  font-weight: 750;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
 .chip:hover{
-  background: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.11);
+  border-color: rgba(255,255,255,0.24);
+  transform: translateY(-1px);
 }
 
 .chip.active{
-  background: rgba(255,255,255,0.16);
-  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.95);
 }
 
-/* CTA card */
-.card{
-  padding: 22px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--c-border);
-  box-shadow: var(--shadow-soft);
+/* ---------- Posts (THIS FIXES YOUR ISSUE) ---------- */
+.posts{
+  display: grid;
+  gap: 16px;
+}
+
+/* Card container */
+a.postRow{
+  display: block;
+  text-decoration: none;
+  border-radius: 22px;
+  padding: 18px 18px;
+  border: 1px solid rgba(255,255,255,0.14);
+
+  /* Key: surface contrast against dark bg */
+  background: rgba(255,255,255,0.08);
+
+  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+a.postRow:hover{
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.11);
+  border-color: rgba(255,255,255,0.20);
+}
+
+.postMeta{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.70);
+}
+
+.postMeta .tag{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.88);
 }
 
 .small{
   font-size: 13px;
-  line-height: 1.5;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.45;
 }
 
-/* Button */
+/* ---------- Buttons ---------- */
 button{
-  border: none;
+  appearance:none;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.92);
+  padding: 12px 16px;
   border-radius: 14px;
-  padding: 12px 18px;
-  font-weight: 700;
-  font-family: var(--font-body);
   cursor:pointer;
-  background: var(--c-ink-2);
-  color: white;
+  font-weight: 800;
+  transition: background 160ms ease, transform 160ms ease, border-color 160ms ease;
 }
 
 button:hover{
-  filter: brightness(1.05);
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.24);
 }
 
-/* Reveal animation helper (keeps your current behavior) */
-.reveal{ opacity: 0; transform: translateY(10px); transition: 520ms ease; }
-.reveal.visible{ opacity: 1; transform: translateY(0px); }
-
-/* Responsive */
-@media (max-width: 960px){
-  .container{ grid-template-columns: 1fr; }
-  .sidebar{ height: auto; position: relative; }
+/* ---------- Reveal (lightweight animation hook) ---------- */
+.reveal{
+  opacity: 1;
+  transform: none;
 }
-
-/* ---------- Collapsible Sidebar ---------- */
-
-/* Toggle button */
-.navToggle{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  border: 1px solid rgba(1,20,37,0.12);
-  background: rgba(255,255,255,0.65);
-  cursor: pointer;
-}
-
-.navToggle:hover{
-  background: rgba(255,255,255,0.85);
-}
-
-.navToggle svg{
-  width: 18px;
-  height: 18px;
-  color: rgba(1,20,37,0.75);
-}
-
-/* Top row in sidebar (brand + toggle) */
-.brandRow{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap: 12px;
-}
-
-/* Collapsed state: reduce left column width and hide text labels */
-html.nav-collapsed .container{
-  grid-template-columns: 92px 1fr;
-}
-
-html.nav-collapsed .sidebar{
-  padding: 18px 12px;
-}
-
-html.nav-collapsed .brand{
-  padding: 10px 6px 12px;
-}
-
-html.nav-collapsed .brand .name,
-html.nav-collapsed .brand .handle,
-html.nav-collapsed .brand .intro{
-  display:none;
-}
-
-html.nav-collapsed .nav{
-  padding: 6px 6px;
-}
-
-html.nav-collapsed .nav a{
-  justify-content:center;
-  padding: 12px 10px;
-}
-
-html.nav-collapsed .nav a svg{
-  margin: 0;
-}
-
-html.nav-collapsed .nav a{
-  font-size: 0; /* hide label without affecting layout */
-}
-
-html.nav-collapsed .findme{
-  padding: 10px 6px;
-}
-
-html.nav-collapsed .findme .kicker,
-html.nav-collapsed .findme .footerNote{
-  display:none;
-}
-
-html.nav-collapsed .findme a{
-  justify-content:center;
-  padding: 12px 10px;
-}
-
-html.nav-collapsed .findme a .left{
-  gap: 0;
-}
-
-html.nav-collapsed .findme a .left span,
-html.nav-collapsed .findme a .ext{
-  display:none;
-}
-
