@@ -12,7 +12,7 @@
       .replaceAll("'", "&#039;");
   }
 
-  function formatTagLabel(tag) {
+  function label(tag) {
     if (tag === "work") return "Build";
     if (tag === "life") return "Live";
     if (tag === "art") return "See";
@@ -20,11 +20,12 @@
   }
 
   function renderCard(p) {
-    const tagLabel = formatTagLabel(p.tag);
+    const tagLabel = label(p.tag);
     const title = escapeHtml(p.title);
     const excerpt = escapeHtml(p.excerpt);
     const date = escapeHtml(p.date);
     const read = escapeHtml(p.read);
+    const href = escapeHtml(p.href);
 
     const cover = p.cover
       ? `<div style="margin-top:12px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.14);">
@@ -33,7 +34,7 @@
       : "";
 
     return `
-      <a class="postRow" href="${escapeHtml(p.href)}">
+      <a class="postRow" href="${href}">
         <div class="postMeta">
           <span class="tag">${tagLabel}</span>
           <span>${date}</span>
