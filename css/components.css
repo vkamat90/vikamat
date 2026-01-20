@@ -287,3 +287,96 @@ button:hover{
   .container{ grid-template-columns: 1fr; }
   .sidebar{ height: auto; position: relative; }
 }
+
+/* ---------- Collapsible Sidebar ---------- */
+
+/* Toggle button */
+.navToggle{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(1,20,37,0.12);
+  background: rgba(255,255,255,0.65);
+  cursor: pointer;
+}
+
+.navToggle:hover{
+  background: rgba(255,255,255,0.85);
+}
+
+.navToggle svg{
+  width: 18px;
+  height: 18px;
+  color: rgba(1,20,37,0.75);
+}
+
+/* Top row in sidebar (brand + toggle) */
+.brandRow{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+/* Collapsed state: reduce left column width and hide text labels */
+html.nav-collapsed .container{
+  grid-template-columns: 92px 1fr;
+}
+
+html.nav-collapsed .sidebar{
+  padding: 18px 12px;
+}
+
+html.nav-collapsed .brand{
+  padding: 10px 6px 12px;
+}
+
+html.nav-collapsed .brand .name,
+html.nav-collapsed .brand .handle,
+html.nav-collapsed .brand .intro{
+  display:none;
+}
+
+html.nav-collapsed .nav{
+  padding: 6px 6px;
+}
+
+html.nav-collapsed .nav a{
+  justify-content:center;
+  padding: 12px 10px;
+}
+
+html.nav-collapsed .nav a svg{
+  margin: 0;
+}
+
+html.nav-collapsed .nav a{
+  font-size: 0; /* hide label without affecting layout */
+}
+
+html.nav-collapsed .findme{
+  padding: 10px 6px;
+}
+
+html.nav-collapsed .findme .kicker,
+html.nav-collapsed .findme .footerNote{
+  display:none;
+}
+
+html.nav-collapsed .findme a{
+  justify-content:center;
+  padding: 12px 10px;
+}
+
+html.nav-collapsed .findme a .left{
+  gap: 0;
+}
+
+html.nav-collapsed .findme a .left span,
+html.nav-collapsed .findme a .ext{
+  display:none;
+}
+
