@@ -1,34 +1,37 @@
-/* css/tokens.css */
+/* css/tokens.css
+   Single source of truth for fonts + colors + sizing tokens
+*/
 
-/* Fonts: Skylar-style pairing (Sans + Italic Serif) */
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
+/* ---- Load fonts (Google Fonts) ---- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Poppins:wght@500;600;700;800;900&display=swap");
 
 :root{
-  /* Typography */
-  --font-body: "Instrument Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  --font-display: "Instrument Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, "Times New Roman", Times, serif;
+  /* ---- Typography ---- */
+  --font-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-display: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-accent: "Playfair Display", Georgia, serif;
 
-  /* Color palette (your blue set) */
-  --c-white: #ffffff;
-  --c-ink: #011425;        /* deep navy */
-  --c-ink-2: #1F4959;      /* navy-blue */
-  --c-mist: #5C7C89;       /* muted blue */
-  --c-sidebar: #F2F3F1;    /* slightly tinted off-white */
-  --c-card: #F5F7F8;       /* card surface */
-  --c-border: rgba(1, 20, 37, 0.14);
+  /* ---- Color palette (your blue scheme) ---- */
+  --c-white: #FFFFFF;
+  --c-ink: #011425;      /* deep navy */
+  --c-navy2: #0B2438;    /* rich navy */
+  --c-blue: #1F4959;     /* teal-blue */
+  --c-mist: #5C7C89;     /* soft blue-grey */
+  --c-soft: #F5F7F8;     /* soft off-white */
 
-  /* Right panel background */
-  --c-bg: #011425;
-  --c-bg-2: #1F4959;
+  /* ---- Radii ---- */
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-pill: 999px;
 
-  /* UI */
-  --radius-lg: 24px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
+  /* ---- Shadows ---- */
+  --shadow-1: 0 14px 30px rgba(0,0,0,0.18);
 
-  --shadow-soft: 0 18px 45px rgba(0,0,0,0.18);
-
-  /* Spacing */
-  --gap: 24px;
+  /* ---- Spacing ---- */
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;
+  --space-4: 18px;
+  --space-5: 22px;
 }
