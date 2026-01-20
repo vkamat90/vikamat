@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vikamat — Vibhav Kamat</title>
 
-  <!-- Core site styles -->
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
 
-  <!-- Homepage-only sidebar collapse + locked hero (self-contained) -->
   <style>
     /* --- Brand row + toggle --- */
     .brandRow{
@@ -32,7 +30,6 @@
       cursor:pointer;
       flex: 0 0 auto;
     }
-
     .navToggle:hover{ background:rgba(255,255,255,0.9); }
 
     .navToggle svg{
@@ -50,9 +47,8 @@
 
     html.nav-collapsed .nav a{
       justify-content:center;
-      font-size:0; /* hide label but keep icon */
+      font-size:0;
     }
-
     html.nav-collapsed .nav a svg{ margin:0; }
 
     html.nav-collapsed .findme .kicker,
@@ -62,7 +58,7 @@
 
     html.nav-collapsed .findme a{ justify-content:center; }
 
-    /* --- Ensure SVG icons always render --- */
+    /* --- Ensure SVG icons render consistently --- */
     .nav svg, .findme svg{
       width:18px;
       height:18px;
@@ -71,19 +67,21 @@
       stroke: currentColor;
     }
 
-    /* --- Locked hero (always visible) --- */
+    /* --- Fixed hero (NO background box) --- */
     .heroFixed{
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  padding-top: 8px;
-  padding-bottom: 14px;
-  background: transparent;
-  backdrop-filter: none;
-}
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      padding-top: 10px;
+      padding-bottom: 16px;
+      background: transparent;
+      backdrop-filter: none;
+    }
 
-    .heroFixed h1{ margin: 0 0 10px; }
-    .heroFixed .lead{ margin: 0; }
+    /* Make sure content below hero is clearly separated */
+    .belowHero{
+      margin-top: 18px;
+    }
   </style>
 </head>
 
@@ -94,13 +92,11 @@
       <div class="brandRow">
         <div class="brand">
           <a href="./index.html" style="text-decoration:none;">
-            <!-- One line: Vibhav "Vi" -->
             <div class="nameLine" style="font-family: var(--font-display); font-weight:700; font-size:20px; color: var(--c-ink);">
               Vibhav <span style="font-weight:800;">"Vi"</span>
             </div>
           </a>
 
-          <!-- Intro lines -->
           <div class="introLine1" style="margin-top:6px; font-size:13px; color: rgba(1,20,37,0.66); line-height:1.35;">
             Product | Marketing | Growth
           </div>
@@ -118,7 +114,6 @@
 
       <nav class="nav" aria-label="Primary">
         <a href="./about.html">
-          <!-- About -->
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="8" r="4"></circle>
             <path d="M4 21c1.5-4 14.5-4 16 0"></path>
@@ -127,7 +122,6 @@
         </a>
 
         <a href="./work.html">
-          <!-- Build -->
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2l-3 7h4l-1 7 5-9h-4l1-5z"></path>
           </svg>
@@ -135,7 +129,6 @@
         </a>
 
         <a href="./life.html">
-          <!-- Live -->
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 21s-8-5-9-9a5 5 0 0 1 9-4 5 5 0 0 1 9 4c-1 4-9 9-9 9z"></path>
           </svg>
@@ -143,7 +136,6 @@
         </a>
 
         <a href="./art.html">
-          <!-- See -->
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="9"></circle>
             <path d="M3 12h18"></path>
@@ -157,13 +149,12 @@
 
         <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
           <span class="left">
-            <!-- LinkedIn -->
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="9" width="4" height="12"></rect>
               <circle cx="4" cy="4" r="2"></circle>
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2"></path>
               <path d="M10 9v12"></path>
-              <path d="M10 14a5 5 0 0 1 10 0v7"></path>
+              <path d="M14 9v12"></path>
+              <path d="M14 14a5 5 0 0 1 8 0v7"></path>
             </svg>
             <span>LinkedIn</span>
           </span>
@@ -172,7 +163,6 @@
 
         <a href="./chat.html">
           <span class="left">
-            <!-- Chat -->
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
             </svg>
@@ -182,7 +172,6 @@
 
         <a href="mailto:letsconnectwithvi@gmail.com">
           <span class="left">
-            <!-- Email -->
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="4" width="20" height="16"></rect>
               <path d="M22 6l-10 7L2 6"></path>
@@ -201,21 +190,21 @@
     <!-- MAIN -->
     <main class="main">
       <div class="content">
-        <!-- LOCKED HERO -->
+        <!-- HERO (fixed) -->
         <section class="heroFixed">
           <h1>Every breakthrough begins with a <em>question</em>.</h1>
           <p class="lead">“Be curious, not judgemental.” — Ted Lasso</p>
         </section>
 
-        <!-- Everything below can change; hero remains fixed -->
-        <section class="reveal" style="margin-top:22px;">
+        <!-- POSTS BROWSER (must exist for you to see posts) -->
+        <section class="reveal belowHero">
           <div class="kicker">Browse</div>
           <h2>Build. Live. See.</h2>
 
           <div class="chips" style="margin-top:14px;">
-            <button class="chip active" data-home-tab="work">Build</button>
-            <button class="chip" data-home-tab="life">Live</button>
-            <button class="chip" data-home-tab="art">See</button>
+            <button class="chip active" type="button" data-home-tab="work">Build</button>
+            <button class="chip" type="button" data-home-tab="life">Live</button>
+            <button class="chip" type="button" data-home-tab="art">See</button>
           </div>
 
           <div class="posts" id="homePosts" style="margin-top:14px;"></div>
@@ -241,58 +230,42 @@
     });
   </script>
 
-  <!-- Content engine (homepage auto-populates from data/posts.js) -->
+  <!-- IMPORTANT: order matters -->
   <script src="./data/posts.js"></script>
   <script src="./js/posts.js"></script>
 
   <script>
-    // Home tabs -> auto-renders posts; no manual updates needed when you add posts to data/posts.js
     document.addEventListener("DOMContentLoaded", function () {
-      let current = "work";
+      // Render initial tab (Build)
+      const mountId = "homePosts";
+      const tabToFilter = (t) => (t === "work" ? "work" : t === "life" ? "life" : "art");
 
-      function setActive(tab) {
-        document.querySelectorAll("[data-home-tab]").forEach(btn => {
-          btn.classList.toggle("active", btn.dataset.homeTab === tab);
-        });
-      }
-
-      function render(tab) {
-        if (typeof window.VK_RENDER_POSTS !== "function") return;
-        window.VK_RENDER_POSTS({ mountId: "homePosts", filterTag: tab });
-
-        // Keep homepage concise
-        const cards = Array.from(document.querySelectorAll("#homePosts .postRow"));
-        cards.slice(4).forEach(n => n.remove());
+      function render(tag) {
+        if (typeof window.VK_RENDER_POSTS === "function") {
+          window.VK_RENDER_POSTS({ mountId, filterTag: tag });
+          // keep homepage tight
+          const cards = Array.from(document.querySelectorAll("#homePosts .postRow"));
+          cards.slice(4).forEach(n => n.remove());
+        } else {
+          const mount = document.getElementById(mountId);
+          if (mount) mount.innerHTML = '<div class="small" style="color: rgba(255,255,255,0.72);">Renderer not loaded (js/posts.js).</div>';
+        }
       }
 
       document.querySelectorAll("[data-home-tab]").forEach(btn => {
         btn.addEventListener("click", function () {
-          current = btn.dataset.homeTab;
-          setActive(current);
-          render(current);
+          document.querySelectorAll("[data-home-tab]").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          render(tabToFilter(btn.dataset.homeTab));
         });
       });
 
-      setActive(current);
-      render(current);
+      render("work");
     });
   </script>
 
   <!-- Cloudflare Web Analytics (replace token) -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token":"YOUR_CLOUDFLARE_TOKEN"}'></script>
-
-  <script src="./data/posts.js"></script>
-<script src="./js/posts.js"></script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Initial render: Build
-    if (typeof window.VK_RENDER_POSTS === "function") {
-      window.VK_RENDER_POSTS({ mountId: "homePosts", filterTag: "work" });
-    }
-  });
-</script>
-  
 </body>
 </html>
