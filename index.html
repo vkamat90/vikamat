@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
 
-  <!-- Sidebar collapse (self-contained, homepage-only) -->
+  <!-- Homepage-only sidebar collapse + locked hero (self-contained) -->
   <style>
+    /* --- Brand row + toggle --- */
     .brandRow{
       display:flex;
       align-items:flex-start;
@@ -29,7 +30,10 @@
       border:1px solid rgba(1,20,37,0.12);
       background:rgba(255,255,255,0.7);
       cursor:pointer;
+      flex: 0 0 auto;
     }
+
+    .navToggle:hover{ background:rgba(255,255,255,0.9); }
 
     .navToggle svg{
       width:18px;
@@ -37,35 +41,49 @@
       stroke:rgba(1,20,37,0.75);
     }
 
-    html.nav-collapsed .container{
-      grid-template-columns:92px 1fr;
-    }
+    /* --- Collapse mode --- */
+    html.nav-collapsed .container{ grid-template-columns:92px 1fr; }
 
-    html.nav-collapsed .brand .name,
-    html.nav-collapsed .brand .handle,
-    html.nav-collapsed .brand .intro{
-      display:none;
-    }
+    html.nav-collapsed .brand .nameLine,
+    html.nav-collapsed .brand .introLine1,
+    html.nav-collapsed .brand .introLine2{ display:none; }
 
     html.nav-collapsed .nav a{
       justify-content:center;
-      font-size:0;
+      font-size:0; /* hide label but keep icon */
     }
 
-    html.nav-collapsed .nav a svg{
-      margin:0;
-    }
+    html.nav-collapsed .nav a svg{ margin:0; }
 
     html.nav-collapsed .findme .kicker,
     html.nav-collapsed .findme .footerNote,
     html.nav-collapsed .findme a .left span,
-    html.nav-collapsed .findme a .ext{
-      display:none;
+    html.nav-collapsed .findme a .ext{ display:none; }
+
+    html.nav-collapsed .findme a{ justify-content:center; }
+
+    /* --- Ensure SVG icons always render --- */
+    .nav svg, .findme svg{
+      width:18px;
+      height:18px;
+      flex: 0 0 18px;
+      display:block;
+      stroke: currentColor;
     }
 
-    html.nav-collapsed .findme a{
-      justify-content:center;
+    /* --- Locked hero (always visible) --- */
+    .heroFixed{
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      padding-top: 8px;
+      padding-bottom: 14px;
+      background: linear-gradient(180deg, rgba(1,20,37,0.96), rgba(1,20,37,0.72) 55%, rgba(1,20,37,0));
+      backdrop-filter: blur(4px);
     }
+
+    .heroFixed h1{ margin: 0 0 10px; }
+    .heroFixed .lead{ margin: 0; }
   </style>
 </head>
 
@@ -76,22 +94,32 @@
       <div class="brandRow">
         <div class="brand">
           <a href="./index.html" style="text-decoration:none;">
-            <div class="name">Vibhav</div>
+            <!-- One line: Vibhav "Vi" -->
+            <div class="nameLine" style="font-family: var(--font-display); font-weight:700; font-size:20px; color: var(--c-ink);">
+              Vibhav <span style="font-weight:800;">"Vi"</span>
+            </div>
           </a>
-          <div class="handle">Vi</div>
-          <div class="intro">Product and Growth Leader | Lifelong Learner</div>
+
+          <!-- Intro lines -->
+          <div class="introLine1" style="margin-top:6px; font-size:13px; color: rgba(1,20,37,0.66); line-height:1.35;">
+            Product | Marketing | Growth
+          </div>
+          <div class="introLine2" style="font-size:13px; color: rgba(1,20,37,0.66); line-height:1.35;">
+            Lifelong learner, Always curious, Rarely offended
+          </div>
         </div>
 
         <button class="navToggle" id="navToggle" aria-label="Toggle navigation">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M15 18l-6-6 6-6"></path>
           </svg>
         </button>
       </div>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary">
         <a href="./about.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <!-- About -->
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="8" r="4"></circle>
             <path d="M4 21c1.5-4 14.5-4 16 0"></path>
           </svg>
@@ -99,21 +127,24 @@
         </a>
 
         <a href="./work.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <!-- Build -->
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2l-3 7h4l-1 7 5-9h-4l1-5z"></path>
           </svg>
           Build
         </a>
 
         <a href="./life.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <!-- Live -->
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 21s-8-5-9-9a5 5 0 0 1 9-4 5 5 0 0 1 9 4c-1 4-9 9-9 9z"></path>
           </svg>
           Live
         </a>
 
         <a href="./art.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <!-- See -->
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="9"></circle>
             <path d="M3 12h18"></path>
           </svg>
@@ -124,12 +155,15 @@
       <div class="findme">
         <div class="kicker">Find Me</div>
 
-        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank">
+        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
           <span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <!-- LinkedIn -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="9" width="4" height="12"></rect>
               <circle cx="4" cy="4" r="2"></circle>
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2"></path>
+              <path d="M10 9v12"></path>
+              <path d="M10 14a5 5 0 0 1 10 0v7"></path>
             </svg>
             <span>LinkedIn</span>
           </span>
@@ -138,7 +172,8 @@
 
         <a href="./chat.html">
           <span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <!-- Chat -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
             </svg>
             <span>Let’s chat</span>
@@ -147,7 +182,8 @@
 
         <a href="mailto:letsconnectwithvi@gmail.com">
           <span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <!-- Email -->
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="4" width="20" height="16"></rect>
               <path d="M22 6l-10 7L2 6"></path>
             </svg>
@@ -165,12 +201,14 @@
     <!-- MAIN -->
     <main class="main">
       <div class="content">
-        <section class="reveal">
+        <!-- LOCKED HERO -->
+        <section class="heroFixed">
           <h1>Every breakthrough begins with a <em>question</em>.</h1>
           <p class="lead">“Be curious, not judgemental.” — Ted Lasso</p>
         </section>
 
-        <section class="reveal" style="margin-top:28px;">
+        <!-- Everything below can change; hero remains fixed -->
+        <section class="reveal" style="margin-top:22px;">
           <div class="kicker">Browse</div>
           <h2>Build. Live. See.</h2>
 
@@ -186,46 +224,61 @@
     </main>
   </div>
 
-  <!-- Sidebar toggle logic -->
   <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Sidebar collapse (persisted)
     const key = "vk_nav_collapsed";
     const root = document.documentElement;
-    const btn = document.getElementById("navToggle");
+    const toggleBtn = document.getElementById("navToggle");
 
-    if(localStorage.getItem(key)==="1"){ root.classList.add("nav-collapsed"); }
+    if (localStorage.getItem(key) === "1") root.classList.add("nav-collapsed");
 
-    btn.onclick = () => {
+    toggleBtn.addEventListener("click", function () {
       root.classList.toggle("nav-collapsed");
       localStorage.setItem(key, root.classList.contains("nav-collapsed") ? "1" : "0");
-    };
-
-    document.getElementById("year").textContent = new Date().getFullYear();
+    });
   </script>
 
-  <!-- Content engine -->
+  <!-- Content engine (homepage auto-populates from data/posts.js) -->
   <script src="./data/posts.js"></script>
   <script src="./js/posts.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function(){
-      let current="work";
-      function render(tab){
-        VK_RENDER_POSTS({ mountId:"homePosts", filterTag:tab });
-        [...document.querySelectorAll("#homePosts .postRow")].slice(4).forEach(n=>n.remove());
+    // Home tabs -> auto-renders posts; no manual updates needed when you add posts to data/posts.js
+    document.addEventListener("DOMContentLoaded", function () {
+      let current = "work";
+
+      function setActive(tab) {
+        document.querySelectorAll("[data-home-tab]").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.homeTab === tab);
+        });
       }
-      document.querySelectorAll("[data-home-tab]").forEach(b=>{
-        b.onclick=()=>{
-          document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
-          b.classList.add("active");
-          current=b.dataset.homeTab;
+
+      function render(tab) {
+        if (typeof window.VK_RENDER_POSTS !== "function") return;
+        window.VK_RENDER_POSTS({ mountId: "homePosts", filterTag: tab });
+
+        // Keep homepage concise
+        const cards = Array.from(document.querySelectorAll("#homePosts .postRow"));
+        cards.slice(4).forEach(n => n.remove());
+      }
+
+      document.querySelectorAll("[data-home-tab]").forEach(btn => {
+        btn.addEventListener("click", function () {
+          current = btn.dataset.homeTab;
+          setActive(current);
           render(current);
-        };
+        });
       });
+
+      setActive(current);
       render(current);
     });
   </script>
 
-  <!-- Cloudflare Web Analytics -->
+  <!-- Cloudflare Web Analytics (replace token) -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token":"YOUR_CLOUDFLARE_TOKEN"}'></script>
 </body>
