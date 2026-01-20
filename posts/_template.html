@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title><!-- TITLE --> — Vikamat</title>
+
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+
+  <style>
+    /* Post layout: uses your existing styles but makes reading feel premium */
+    .postWrap{
+      max-width: 820px;
+      padding: 26px 36px 60px;
+    }
+    .postKicker{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .postKicker .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.20);
+      background: rgba(255,255,255,0.06);
+      font-weight: 700;
+      color: rgba(255,255,255,0.88);
+    }
+    .postTitle{
+      margin: 0 0 10px;
+      font-size: clamp(36px, 4.8vw, 56px);
+      line-height: 1.04;
+    }
+    .postSub{
+      color: rgba(255,255,255,0.80);
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+      max-width: 70ch;
+    }
+    .heroImg{
+      width: 100%;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      margin: 16px 0 26px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.20);
+      overflow:hidden;
+    }
+    .heroImg img{
+      width:100%;
+      display:block;
+    }
+
+    /* Reading body */
+    .prose{
+      color: rgba(255,255,255,0.86);
+      font-size: 17px;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .prose h2{
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    .prose h3{
+      margin-top: 22px;
+      margin-bottom: 8px;
+    }
+    .prose p{
+      margin: 0 0 14px;
+    }
+    .prose ul{
+      margin: 0 0 16px 18px;
+    }
+    .prose blockquote{
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-left: 3px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px;
+      color: rgba(255,255,255,0.86);
+    }
+    .callout{
+      margin: 18px 0;
+      padding: 16px 16px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      border-radius: 18px;
+    }
+    .callout .label{
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 11px;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    /* Footer nav */
+    .postFooter{
+      margin-top: 34px;
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+    .postFooter a{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      text-decoration:none;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.88);
+      font-weight: 700;
+    }
+    .postFooter a:hover{
+      background: rgba(255,255,255,0.10);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="main">
+    <div class="postWrap">
+      <div class="postKicker">
+        <span class="pill"><!-- TAG: Build/Live/See --></span>
+        <span><!-- DATE --></span>
+        <span>•</span>
+        <span><!-- READING TIME e.g. 6 min read --></span>
+      </div>
+
+      <h1 class="postTitle"><!-- TITLE --></h1>
+
+      <p class="postSub"><!-- 1–2 line subtitle / thesis --></p>
+
+      <!-- Optional hero image (delete this entire block if no image) -->
+      <div class="heroImg">
+        <img src="../assets/PLACEHOLDER.jpg" alt="" />
+      </div>
+
+      <article class="prose">
+        <h2>What I observed</h2>
+        <p>Write the situation plainly. What happened? What was the constraint?</p>
+
+        <h2>What I tried</h2>
+        <p>Turn the story into an experiment: hypothesis → action → measurement.</p>
+
+        <div class="callout">
+          <div class="label">Takeaway</div>
+          <p>One sentence that’s useful even if the reader forgets the rest.</p>
+        </div>
+
+        <h2>What changed</h2>
+        <p>Outcome, tradeoffs, and what you’d do differently next time.</p>
+
+        <blockquote>
+          Optional: a line you want the reader to remember.
+        </blockquote>
+      </article>
+
+      <div class="postFooter">
+        <a href="../index.html">← Back to home</a>
+        <a href="../work.html">Build</a>
+        <a href="../life.html">Live</a>
+        <a href="../art.html">See</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
