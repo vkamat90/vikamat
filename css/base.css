@@ -1,115 +1,65 @@
-@import url("./tokens.css");
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap");
+/* css/base.css
+   Layout + global baseline
+*/
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-
-body {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  line-height: var(--lh-body);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Overall base doesn't matter much because panels set their own bg,
-     but keep it aligned with the main for clean edges */
-  background: var(--main-bg);
-  color: var(--main-text);
+:root{
+  --sidebar-w: 320px;
 }
 
-/* Links (inside cards, etc.) */
-a { color: var(--accent); text-decoration: none; }
-a:hover { opacity: 0.85; }
+*{ box-sizing: border-box; }
 
-.container {
+html, body{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  font-family: var(--font-body, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif);
+  background: #ffffff;
+}
+
+/* Two-column app shell */
+.container{
   display: grid;
   grid-template-columns: var(--sidebar-w) 1fr;
   min-height: 100vh;
 }
 
-/* LEFT: Tinted sidebar */
-.sidebar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  padding: var(--s-6) var(--s-5);
-  background: var(--sidebar-bg);
-  color: var(--sidebar-text);
-  border-right: 1px solid var(--sidebar-border);
+/* Collapsed nav */
+html.nav-collapsed{
+  --sidebar-w: 92px;
 }
 
-/* RIGHT: Dark main with subtle depth */
-.main {
-  padding: var(--s-7) var(--s-6);
-  background:
-    radial-gradient(1200px 700px at 22% 12%, rgba(92,124,137,0.22), transparent 60%),
-    radial-gradient(1000px 700px at 85% 30%, rgba(31,73,89,0.16), transparent 62%),
-    linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.00) 55%),
-    var(--main-bg);
-  color: var(--main-text);
+/* Right panel: THE DARK BACKGROUND YOU LIKED */
+.main{
+  min-height: 100vh;
+  background: radial-gradient(1200px 700px at 30% 20%, rgba(31,73,89,0.55), rgba(1,20,37,0) 55%),
+              linear-gradient(180deg, #011425 0%, #061a2a 55%, #011425 100%);
 }
 
-.content { max-width: var(--max-content); }
-
-/* Helpers */
-.small { font-size: 13px; letter-spacing: 0.01em; }
-.kicker {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-family: var(--font-body);
-  font-weight: 500;
+/* Content spacing */
+.content{
+  max-width: 1020px;
+  padding: 44px 44px 70px;
 }
 
-/* Headings (editorial) */
-h1, h2, h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.015em;
+/* Basic type defaults in dark panel */
+h1, h2, h3{
+  margin: 0;
+  color: rgba(255,255,255,0.94);
 }
 
-/* On right (dark) */
-.main h1, .main h2, .main h3 { color: #ffffff; }
-.main p { color: var(--main-subtext); }
-.main .kicker { color: rgba(92,124,137,0.92); }
-.main .small { color: rgba(92,124,137,0.85); }
-
-/* On left (sidebar) */
-.sidebar .kicker { color: var(--sidebar-muted); }
-.sidebar .small { color: var(--sidebar-muted); }
-
-/* Sizes / rhythm */
-h1 { font-size: var(--h1); line-height: var(--lh-head); margin: 0 0 var(--s-4); }
-h2 { font-size: var(--h2); line-height: 1.18; margin: var(--s-6) 0 var(--s-3); }
-h3 { font-size: var(--h3); line-height: 1.22; margin: var(--s-5) 0 var(--s-2); }
-
-p { margin: 0 0 var(--s-4); }
-
-.lead {
-  font-size: var(--text-lead);
-  line-height: 1.7;
-  color: rgba(92,124,137,0.92);
+p{
+  margin: 0;
 }
 
-/* Divider */
-hr {
-  border: none;
-  border-top: 1px solid var(--main-divider);
-  margin: var(--s-6) 0;
-}
-
-/* Mobile */
-@media (max-width: 920px) {
-  .container { grid-template-columns: 1fr; }
-
-  .sidebar {
+/* Responsive */
+@media (max-width: 980px){
+  .container{
+    grid-template-columns: 1fr;
+  }
+  .sidebar{
     position: relative;
     height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--sidebar-border);
   }
-
-  .main { padding: var(--s-6) var(--s-5); }
-  h1 { font-size: 44px; }
 }
