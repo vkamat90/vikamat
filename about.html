@@ -15,26 +15,82 @@
     <aside class="sidebar">
       <div class="brand">
         <a href="./index.html" style="text-decoration:none;">
-          <div class="name" style="font-family: var(--font-display); font-size:20px;">
-            Vibhav Kamat
-          </div>
+          <div class="name">Vibhav</div>
         </a>
-        <div class="role"><strong>Vi</strong></div>
+        <div class="handle">Vi</div>
+        <div class="intro">Product and Growth Leader | Lifelong Learner</div>
       </div>
 
       <nav class="nav" aria-label="Primary">
-        <a class="active" href="./about.html">About</a>
-        <a href="./work.html">Work</a>
-        <a href="./life.html">Life</a>
-        <a href="./art.html">Art</a>
-        <a href="./chat.html">Let’s chat</a>
+        <a class="active" href="./about.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="8" r="4"></circle>
+          </svg>
+          About
+        </a>
+
+        <a href="./work.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l-3 7h4l-1 7 5-9h-4l1-5z"></path>
+            <path d="M3 20h18"></path>
+          </svg>
+          Build
+        </a>
+
+        <a href="./life.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s-7-4.6-9.5-8.6C.5 8.8 2.7 6 5.9 6c1.7 0 3.2.8 4.1 2 0 0 1.6-2 4.1-2 3.2 0 5.4 2.8 3.4 6.4C19 16.4 12 21 12 21z"></path>
+          </svg>
+          Live
+        </a>
+
+        <a href="./art.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M12 3a14 14 0 0 1 0 18"></path>
+            <path d="M12 3a14 14 0 0 0 0 18"></path>
+          </svg>
+          See
+        </a>
       </nav>
 
-      <div class="social">
-        <div class="kicker">Social</div>
-        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <div class="findme">
+        <div class="kicker">Find Me</div>
 
-        <div class="small" style="margin-top:18px;">
+        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
+          <span class="left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            LinkedIn
+          </span>
+          <span class="ext">↗</span>
+        </a>
+
+        <a href="./chat.html">
+          <span class="left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
+            </svg>
+            Let’s chat
+          </span>
+        </a>
+
+        <a href="mailto:letsconnectwithvi@gmail.com">
+          <span class="left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16v16H4z"></path>
+              <path d="M22 6l-10 7L2 6"></path>
+            </svg>
+            Send me an e-mail
+          </span>
+        </a>
+
+        <div class="footerNote">
           © <span id="year"></span> Vikamat.<br/>
           Built with AI prompts, coffee and desire to learn.
         </div>
@@ -45,26 +101,13 @@
       <div class="content">
         <section class="reveal">
           <h1>About</h1>
-          <p class="lead">
-            This page will tell my story with radical clarity: what I believe, how I work, and what I’m building toward.
-          </p>
-        </section>
-
-        <section class="reveal" style="margin-top: 28px;">
-          <div class="card" style="background:#F5F7F8;">
-            <h3 style="margin:0 0 10px; color:#011425;">Wireframe placeholders</h3>
-            <p style="margin:0; color:#1F4959;">
-              We’ll add: origin story, product leadership narrative, key bets, principles, and “how I think.”
-            </p>
-          </div>
+          <p class="lead">Wireframe placeholder — we’ll write your story with radical clarity and real proof.</p>
         </section>
       </div>
     </main>
   </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   <script src="./js/reveal.js"></script>
 </body>
 </html>
