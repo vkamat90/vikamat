@@ -2,6 +2,20 @@
 // Simple content DB (no CMS). Add entries here and they auto-appear everywhere.
 
 window.VK_POSTS = [
+  
+  {
+  id: "build-first-principles",
+  tag: "work",
+  title: "First Principles for Product Decisions",
+  date: "2026-01-19",
+  read: "6 min read",
+  excerpt: "A practical way to de-risk product calls when the data is incomplete.",
+  href: "./posts/build-first-principles.html",
+  cover: "./assets/cover-first-principles.jpg"
+},
+
+  
+  
   {
     id: "work-001",
     type: "writing",
