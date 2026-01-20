@@ -1,64 +1,34 @@
-:root {
-  /* Layout */
-  --sidebar-w: 280px;
-  --max-content: 760px;
+/* css/tokens.css */
 
+/* Fonts: Skylar-style pairing (Sans + Italic Serif) */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
+
+:root{
   /* Typography */
-  --font-body: "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  --font-display: "Playfair Display", ui-serif, Georgia, "Times New Roman", Times, serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-body: "Instrument Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Instrument Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", Times, serif;
 
-  --text-base: 16px;
-  --text-lead: 18px;
+  /* Color palette (your blue set) */
+  --c-white: #ffffff;
+  --c-ink: #011425;        /* deep navy */
+  --c-ink-2: #1F4959;      /* navy-blue */
+  --c-mist: #5C7C89;       /* muted blue */
+  --c-sidebar: #F2F3F1;    /* slightly tinted off-white */
+  --c-card: #F5F7F8;       /* card surface */
+  --c-border: rgba(1, 20, 37, 0.14);
 
-  --h1: 56px;
-  --h2: 30px;
-  --h3: 20px;
+  /* Right panel background */
+  --c-bg: #011425;
+  --c-bg-2: #1F4959;
 
-  --lh-body: 1.75;
-  --lh-head: 1.05;
+  /* UI */
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+
+  --shadow-soft: 0 18px 45px rgba(0,0,0,0.18);
 
   /* Spacing */
-  --s-1: 6px;
-  --s-2: 10px;
-  --s-3: 14px;
-  --s-4: 20px;
-  --s-5: 28px;
-  --s-6: 40px;
-  --s-7: 56px;
-
-  /* Radius / shadow */
-  --r-1: 10px;
-  --r-2: 16px;
-  --shadow: 0 14px 34px rgba(1, 20, 37, 0.22);
-
-  /* Motion */
-  --ease: cubic-bezier(.2,.8,.2,1);
-  --dur: 520ms;
-
-  /* === Color System (as per your spec) === */
-
-  /* Left sidebar (tinted blue-gray) */
-  --sidebar-bg: #eaf0f3;
-  --sidebar-text: #1f4959;         /* navy-ish text */
-  --sidebar-muted: #607a86;
-  --sidebar-border: rgba(1, 20, 37, 0.10);
-
-  /* Nav pill states */
-  --nav-hover: #dde8ee;            /* hover light-blue */
-  --nav-active: #d2e0e8;           /* active pill */
-
-  /* Right main (dark navy) */
-  --main-bg: #011425;
-  --main-text: rgba(255,255,255,0.96);
-  --main-subtext: #5c7c89;         /* light blue subtext */
-  --main-divider: rgba(255,255,255,0.14);
-
-  /* Surfaces on dark */
-  --bg-surface: rgba(255,255,255,0.94);
-  --border: rgba(1, 20, 37, 0.16);
-
-  /* Accent */
-  --accent: #1f4959;
-  --accent-weak: rgba(31, 73, 89, 0.14);
+  --gap: 24px;
 }
