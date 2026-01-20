@@ -3,59 +3,126 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Let’s chat — Vibhav Kamat</title>
+  <title>Let’s Chat — Vikamat</title>
 
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
+
+  <!-- Cloudflare Web Analytics (site-level) -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token":"ba6df2a0397d42bd9c072756f467bf76"}'></script>
+
+  <!-- Cal.com Embed Loader -->
+  <script>
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          typeof namespace === "string" ? (cal.ns[namespace] = api) : p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    Cal("init", "booking", { origin: "https://cal.com" });
+  </script>
+
+  <style>
+    /* Ensures the embedded scheduler feels "native" inside your dark panel */
+    .embedShell{
+      margin-top: 20px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+      background: #ffffff;
+      min-height: 720px;
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
+    <!-- LEFT NAV -->
     <aside class="sidebar">
-      <div class="brand">
-        <a href="./index.html" style="text-decoration:none;">
-          <div class="name" style="font-family: var(--font-display); font-size:20px;">
-            Vibhav Kamat
-          </div>
-        </a>
-        <div class="role"><strong>Vi</strong></div>
+      <div class="brandRow">
+        <div class="brand">
+          <a href="./index.html" class="brandLink">
+            <div class="nameLine">Vibhav <span class="vi">"Vi"</span></div>
+          </a>
+
+          <div class="introLine1">Product | Marketing | Growth</div>
+          <div class="introLine2">Lifelong learner, Always curious, Rarely offended</div>
+        </div>
       </div>
 
       <nav class="nav" aria-label="Primary">
         <a href="./about.html">About</a>
-        <a href="./work.html">Work</a>
-        <a href="./life.html">Life</a>
-        <a href="./art.html">Art</a>
-        <a class="active" href="./chat.html">Let’s chat</a>
+        <a href="./work.html">Build</a>
+        <a href="./life.html">Live</a>
+        <a href="./art.html">See</a>
+        <a href="./chat.html" aria-current="page">Let’s chat</a>
       </nav>
 
-      <div class="social">
-        <div class="kicker">Social</div>
-        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <div class="findme">
+        <div class="kickerLeft">Find Me</div>
 
-        <div class="small" style="margin-top:18px;">
+        <a class="findLink" href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
+          <span class="left">
+            <span class="findLabel">LinkedIn</span>
+          </span>
+          <span class="ext">↗</span>
+        </a>
+
+        <a class="findLink" href="mailto:letsconnectwithvi@gmail.com">
+          <span class="left">
+            <span class="findLabel">Email me</span>
+          </span>
+        </a>
+
+        <div class="footerNote">
           © <span id="year"></span> Vikamat.<br/>
           Built with AI prompts, coffee and desire to learn.
         </div>
       </div>
     </aside>
 
+    <!-- RIGHT PANEL -->
     <main class="main">
       <div class="content">
-        <section class="reveal">
-          <h1>Let’s chat</h1>
-          <p class="lead">
-            This page will host Cal.com booking so it’s easy to connect.
+        <section class="heroFixed">
+          <h1>Let’s talk.</h1>
+          <p class="quote">
+            Career advice, product brainstorming, a thorny problem, or just a genuine conversation.
+            If there’s mutual learning, I’m in.
           </p>
         </section>
 
-        <section class="reveal" style="margin-top: 28px;">
-          <div class="card" style="background:#F5F7F8;">
-            <h3 style="margin:0 0 10px; color:#011425;">Booking (placeholder)</h3>
-            <p style="margin:0; color:#1F4959;">
-              Next step: embed Cal.com here and set up time blocks, meeting types, and boundaries.
-            </p>
+        <section class="belowHero">
+          <div class="kicker">Book time</div>
+          <h2 class="sectionTitle" style="margin-top:10px;">Let’s chat for 25 mins</h2>
+
+          <div class="embedShell">
+            <!-- Cal.com embed mount -->
+            <div
+              data-cal-link="vikamat/lets-chat-for-25-mins"
+              data-cal-config='{"layout":"month_view"}'
+              style="min-height:720px;">
+            </div>
           </div>
         </section>
       </div>
@@ -65,6 +132,5 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-  <script src="./js/reveal.js"></script>
 </body>
 </html>
