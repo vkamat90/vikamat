@@ -14,19 +14,63 @@
     data-cf-beacon='{"token":"ba6df2a0397d42bd9c072756f467bf76"}'></script>
 
   <style>
-    /* ===== Cal embed wrapper ===== */
+    /* ===== Sticky header spacing fix ===== */
+    :root { --chatHeroH: 0px; }
+
+    .heroFixed{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding-top: 4px;
+      background: linear-gradient(
+        180deg,
+        rgba(1,20,37,0.92) 0%,
+        rgba(1,20,37,0.78) 60%,
+        rgba(1,20,37,0.00) 100%
+      );
+      backdrop-filter: blur(10px);
+    }
+
+    .heroSpacer{ height: var(--chatHeroH); }
+
+    .heroDivider{
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin-top: 14px;
+    }
+
+    .chatCopy { margin-top: 10px; max-width: 70ch; }
+    .chatPS { margin-top: 10px; max-width: 80ch; opacity: 0.92; }
+
+    /* ===== Cal embed wrapper =====
+       Use an off-white background to avoid "washed out" look */
     .embedShell{
       margin-top: 18px;
       border-radius: 24px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.14);
       box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-      background: #ffffff;
-      min-height: 780px;
+      background: #F5F7F8; /* off-white from your palette direction */
+      min-height: 820px;
+      padding: 12px; /* gives breathing room for iframe */
     }
+
     #cal-embed {
       width: 100%;
-      min-height: 780px;
+      min-height: 796px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #ffffff; /* inner surface */
+      border: 1px solid rgba(1,20,37,0.10);
+    }
+
+    /* iframe is injected by Cal. Ensure it fills and doesn't inherit weird styles */
+    #cal-embed iframe {
+      width: 100% !important;
+      height: 796px !important;
+      border: 0 !important;
+      background: #ffffff !important;
+      display: block !important;
     }
 
     .embedFallback {
@@ -37,52 +81,6 @@
       display: none;
     }
     .embedFallback a { text-decoration: underline; }
-
-    /* ===== Sticky header spacing fix =====
-       We don't assume the height. We compute it once and set a CSS var. */
-    :root { --chatHeroH: 0px; }
-
-    /* heroFixed exists in your current design system; we keep it sticky
-       but ensure content below starts after it. */
-    .heroFixed{
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      padding-top: 4px;
-
-      /* Make the sticky header look intentional over the dark background */
-      background: linear-gradient(
-        180deg,
-        rgba(1,20,37,0.92) 0%,
-        rgba(1,20,37,0.78) 60%,
-        rgba(1,20,37,0.00) 100%
-      );
-
-      backdrop-filter: blur(10px);
-    }
-
-    /* Spacer that prevents overlap. JS sets --chatHeroH */
-    .heroSpacer{
-      height: var(--chatHeroH);
-    }
-
-    /* Adds a clean divider between sticky hero and content */
-    .heroDivider{
-      height: 1px;
-      background: rgba(255,255,255,0.12);
-      margin-top: 14px;
-    }
-
-    /* Copy tweaks: nicer rhythm */
-    .chatCopy {
-      margin-top: 10px;
-      max-width: 70ch;
-    }
-    .chatPS {
-      margin-top: 10px;
-      max-width: 80ch;
-      opacity: 0.92;
-    }
   </style>
 </head>
 
@@ -131,7 +129,6 @@
     <main class="main">
       <div class="content">
 
-        <!-- Sticky header: copy stays visible, but won't overlap content -->
         <section class="heroFixed" id="chatHero">
           <h1>Let’s talk.</h1>
 
@@ -149,7 +146,6 @@
           <div class="heroDivider"></div>
         </section>
 
-        <!-- Spacer prevents overlap with sticky hero -->
         <div class="heroSpacer" aria-hidden="true"></div>
 
         <section class="belowHero">
@@ -174,12 +170,9 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Measure sticky hero height once and set a CSS variable for spacing.
     (function(){
       const hero = document.getElementById("chatHero");
       if (!hero) return;
-      // Use requestAnimationFrame to ensure layout is computed after fonts/styles
       requestAnimationFrame(function(){
         const h = hero.getBoundingClientRect().height;
         document.documentElement.style.setProperty("--chatHeroH", h + "px");
@@ -187,7 +180,7 @@
     })();
   </script>
 
-  <!-- Cal.com Embed (reliable inline mount) -->
+  <!-- Cal.com Embed Loader -->
   <script>
     (function (C, A) {
       let d = C.document;
@@ -206,13 +199,13 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const mount = document.getElementById("cal-embed");
+      const mountSel = "#cal-embed";
       const fallback = document.getElementById("cal-fallback");
 
       try {
         Cal("init", { origin: "https://cal.com" });
 
-        // Force light theme so it matches your right-panel aesthetic
+        // Force light theme explicitly (some embeds respect this, some use inline config)
         Cal("ui", {
           theme: "light",
           styles: {
@@ -220,16 +213,19 @@
           }
         });
 
+        // IMPORTANT: Force theme/layout again at embed-level
         Cal("inline", {
-          elementOrSelector: "#cal-embed",
+          elementOrSelector: mountSel,
           calLink: "vikamat/lets-chat-for-25-mins",
-          layout: "month_view"
+          layout: "month_view",
+          theme: "light"
         });
 
         setTimeout(function () {
+          const mount = document.querySelector(mountSel);
           const hasIframe = mount && mount.querySelector("iframe");
           if (!hasIframe && fallback) fallback.style.display = "block";
-        }, 2500);
+        }, 3000);
       } catch (e) {
         if (fallback) fallback.style.display = "block";
       }
