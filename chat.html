@@ -14,8 +14,9 @@
     data-cf-beacon='{"token":"ba6df2a0397d42bd9c072756f467bf76"}'></script>
 
   <style>
+    /* ===== Cal embed wrapper ===== */
     .embedShell{
-      margin-top: 20px;
+      margin-top: 18px;
       border-radius: 24px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.14);
@@ -27,6 +28,7 @@
       width: 100%;
       min-height: 780px;
     }
+
     .embedFallback {
       padding: 18px 18px 22px;
       color: #011425;
@@ -35,6 +37,52 @@
       display: none;
     }
     .embedFallback a { text-decoration: underline; }
+
+    /* ===== Sticky header spacing fix =====
+       We don't assume the height. We compute it once and set a CSS var. */
+    :root { --chatHeroH: 0px; }
+
+    /* heroFixed exists in your current design system; we keep it sticky
+       but ensure content below starts after it. */
+    .heroFixed{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding-top: 4px;
+
+      /* Make the sticky header look intentional over the dark background */
+      background: linear-gradient(
+        180deg,
+        rgba(1,20,37,0.92) 0%,
+        rgba(1,20,37,0.78) 60%,
+        rgba(1,20,37,0.00) 100%
+      );
+
+      backdrop-filter: blur(10px);
+    }
+
+    /* Spacer that prevents overlap. JS sets --chatHeroH */
+    .heroSpacer{
+      height: var(--chatHeroH);
+    }
+
+    /* Adds a clean divider between sticky hero and content */
+    .heroDivider{
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin-top: 14px;
+    }
+
+    /* Copy tweaks: nicer rhythm */
+    .chatCopy {
+      margin-top: 10px;
+      max-width: 70ch;
+    }
+    .chatPS {
+      margin-top: 10px;
+      max-width: 80ch;
+      opacity: 0.92;
+    }
   </style>
 </head>
 
@@ -82,23 +130,35 @@
     <!-- RIGHT PANEL -->
     <main class="main">
       <div class="content">
-        <section class="heroFixed">
+
+        <!-- Sticky header: copy stays visible, but won't overlap content -->
+        <section class="heroFixed" id="chatHero">
           <h1>Let’s talk.</h1>
-          <p class="quote">
-            Career advice, product brainstorming, a thorny problem, or just a genuine conversation.
+
+          <p class="quote chatCopy">
+            Career advice, product brainstorming, a thorny problem, or a genuine conversation.
             If there’s mutual learning, I’m in.
           </p>
+
+          <p class="small chatPS">
+            <strong>P.S.</strong> If you have something to sell, please don’t book this slot.
+            I started my career in sales (the cold-calling kind), so I can spot it from a mile away.
+            If you want to reach me, email or LinkedIn is the better route — I’ll respond when I can.
+          </p>
+
+          <div class="heroDivider"></div>
         </section>
+
+        <!-- Spacer prevents overlap with sticky hero -->
+        <div class="heroSpacer" aria-hidden="true"></div>
 
         <section class="belowHero">
           <div class="kicker">Book time</div>
           <h2 class="sectionTitle" style="margin-top:10px;">Let’s chat for 25 mins</h2>
 
           <div class="embedShell">
-            <!-- Deterministic mount point -->
             <div id="cal-embed"></div>
 
-            <!-- Fallback if the embed fails (rare, but keeps UX intact) -->
             <div id="cal-fallback" class="embedFallback">
               If the scheduler didn’t load, open it directly:
               <a href="https://cal.com/vikamat/lets-chat-for-25-mins" target="_blank" rel="noreferrer">
@@ -107,59 +167,66 @@
             </div>
           </div>
         </section>
+
       </div>
     </main>
   </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Measure sticky hero height once and set a CSS variable for spacing.
+    (function(){
+      const hero = document.getElementById("chatHero");
+      if (!hero) return;
+      // Use requestAnimationFrame to ensure layout is computed after fonts/styles
+      requestAnimationFrame(function(){
+        const h = hero.getBoundingClientRect().height;
+        document.documentElement.style.setProperty("--chatHeroH", h + "px");
+      });
+    })();
   </script>
 
   <!-- Cal.com Embed (reliable inline mount) -->
   <script>
-    (function (C, A, L) {
-      let p = function (a, ar) { a.q.push(ar); };
+    (function (C, A) {
       let d = C.document;
       C.Cal = C.Cal || function () {
         let cal = C.Cal;
         let ar = arguments;
+        cal.q = cal.q || [];
+        cal.q.push(ar);
         if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
           d.head.appendChild(d.createElement("script")).src = A;
           cal.loaded = true;
         }
-        p(cal, ar);
       };
-    })(window, "https://app.cal.com/embed/embed.js", "Cal");
+    })(window, "https://app.cal.com/embed/embed.js");
   </script>
 
   <script>
-    // Mount after DOM is ready + embed.js is available
     document.addEventListener("DOMContentLoaded", function () {
       const mount = document.getElementById("cal-embed");
       const fallback = document.getElementById("cal-fallback");
 
-      // Load + init
       try {
         Cal("init", { origin: "https://cal.com" });
 
-        // Optional UI polish (safe defaults)
+        // Force light theme so it matches your right-panel aesthetic
         Cal("ui", {
           theme: "light",
-          styles: { branding: { brandColor: "#1F4959" } }
+          styles: {
+            branding: { brandColor: "#1F4959" }
+          }
         });
 
-        // Deterministic inline mount
         Cal("inline", {
           elementOrSelector: "#cal-embed",
           calLink: "vikamat/lets-chat-for-25-mins",
           layout: "month_view"
         });
 
-        // If nothing renders after a short delay, show fallback link
         setTimeout(function () {
-          // If iframe didn't mount, show fallback
           const hasIframe = mount && mount.querySelector("iframe");
           if (!hasIframe && fallback) fallback.style.display = "block";
         }, 2500);
