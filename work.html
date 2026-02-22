@@ -3,72 +3,76 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Work — Vibhav Kamat</title>
+  <title>Build — Vikamat</title>
 
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
+  <link rel="stylesheet" href="./css/site.css" />
+
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token":"ba6df2a0397d42bd9c072756f467bf76"}'></script>
+
+  <script defer src="./js/layout.js"></script>
+
+  <style>
+    .postsWrap{ margin-top: 14px; max-width: 1000px; }
+    a.postRow{
+      display:block;
+      text-decoration:none;
+      border-radius:18px;
+      padding:16px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.90);
+      margin-bottom:12px;
+    }
+    a.postRow:hover{ background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.18); }
+    .emptyState{
+      margin-top: 10px;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.04);
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <div class="brand">
-        <a href="./index.html" style="text-decoration:none;">
-          <div class="name" style="font-family: var(--font-display); font-size:20px;">
-            Vibhav Kamat
-          </div>
-        </a>
-        <div class="role"><strong>Vi</strong></div>
-      </div>
+  <div id="vk-page">
+    <section>
+      <h1>Build</h1>
+      <p class="lead" style="max-width: 80ch; color: rgba(255,255,255,0.86);">
+        Experiments • Outcomes • Product leadership
+      </p>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="./about.html">About</a>
-        <a class="active" href="./work.html">Work</a>
-        <a href="./life.html">Life</a>
-        <a href="./art.html">Art</a>
-        <a href="./chat.html">Let’s chat</a>
-      </nav>
-
-      <div class="social">
-        <div class="kicker">Social</div>
-        <a href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">LinkedIn</a>
-
-        <div class="small" style="margin-top:18px;">
-          © <span id="year"></span> Vikamat.<br/>
-          Built with AI prompts, coffee and desire to learn.
+      <div class="postsWrap">
+        <div id="postsMountWork"></div>
+        <div id="workEmpty" class="emptyState" style="display:none;">
+          No Build posts yet. Add items to <code>data/posts.js</code> with <code>tag: "work"</code>.
         </div>
       </div>
-    </aside>
-
-    <main class="main">
-      <div class="content">
-        <section class="reveal">
-          <h1>Work</h1>
-          <p class="lead">
-            Writing about product leadership as experiments and outcomes — no corporate filler.
-          </p>
-        </section>
-
-        <section class="reveal" style="margin-top: 28px;">
-          <div class="posts">
-            <div class="postRow">
-              <div class="postMeta">
-                <span class="tag">Work</span>
-                <span>Placeholder</span>
-              </div>
-              <h3 style="margin:10px 0 6px; color:#fff;">Work posts will live here</h3>
-              <div class="small">Next step: load your Work-tagged entries and render them cleanly.</div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
+    </section>
   </div>
 
+  <script src="./data/posts.js"></script>
+  <script src="./js/posts.js"></script>
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", function () {
+      const mount = document.getElementById("postsMountWork");
+      const empty = document.getElementById("workEmpty");
+
+      if (typeof window.VK_RENDER_POSTS === "function") {
+        window.VK_RENDER_POSTS({ mountId: "postsMountWork", filterTag: "work" });
+        setTimeout(() => {
+          const hasCards = mount && mount.querySelector("a.postRow");
+          if (empty) empty.style.display = hasCards ? "none" : "block";
+        }, 0);
+      } else {
+        if (empty) empty.style.display = "block";
+      }
+    });
   </script>
-  <script src="./js/reveal.js"></script>
 </body>
 </html>
