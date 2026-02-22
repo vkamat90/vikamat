@@ -8,150 +8,18 @@
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
+  <link rel="stylesheet" href="./css/site.css" />
 
-  <!-- Cloudflare Web Analytics (site-level) -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
     data-cf-beacon='{"token":"ba6df2a0397d42bd9c072756f467bf76"}'></script>
 
+  <script defer src="./js/layout.js"></script>
+
   <style>
-    /* =========================================================
-       CHAT PAGE OVERRIDES (kept self-contained + stable)
-       ========================================================= */
+    .chatCopy{ max-width: 72ch; color: rgba(255,255,255,0.88); }
+    .chatPS{ max-width: 86ch; color: rgba(92,124,137,0.95); margin-top: 10px; }
 
-    /* Right panel keeps your dark theme */
-    .main {
-      background: radial-gradient(1200px 700px at 25% 20%, rgba(92,124,137,0.25), transparent 60%),
-                  radial-gradient(1000px 600px at 70% 40%, rgba(31,73,89,0.22), transparent 55%),
-                  #011425;
-      color: #ffffff;
-    }
-
-    /* Left nav matches landing page (icons + spacing + Find Me buttons) */
-    .sidebar {
-      background: #ffffff;
-      color: #011425;
-      border-right: 1px solid rgba(1,20,37,0.08);
-    }
-
-    /* --- FIX: prevent awkward wrapping in the brand header --- */
-    .brandRow { padding: 26px 22px 10px; }
-    .brandTop {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      flex-wrap: wrap;              /* allows clean wrap on narrow widths */
-      max-width: 260px;             /* keeps it tidy; adjust if you want */
-    }
-    .nameLine {
-      font-weight: 800;
-      font-size: 22px;
-      letter-spacing: -0.02em;
-      color: #011425;
-      white-space: nowrap;          /* keeps Vibhav "Vi" together */
-    }
-    .nameLine .vi { font-weight: 800; }
-
-    .pillarsLine {
-      font-size: 12.5px;
-      font-weight: 650;
-      color: rgba(1,20,37,0.62);
-      white-space: nowrap;          /* keeps Product | Marketing | Growth as one unit */
-    }
-
-    .traitsLine {
-      margin-top: 8px;
-      font-size: 13.5px;
-      line-height: 1.35;
-      color: rgba(1,20,37,0.55);
-      max-width: 260px;             /* keeps sentence shape natural */
-    }
-
-    .nav { padding: 10px 14px 0; }
-    .nav a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 10px;
-      border-radius: 14px;
-      text-decoration: none;
-      color: rgba(1,20,37,0.82);
-      font-weight: 650;
-    }
-    .nav a:hover { background: rgba(92,124,137,0.18); }
-    .nav a[aria-current="page"] { background: rgba(31,73,89,0.12); color: #011425; }
-
-    .navIcon {
-      width: 18px;
-      height: 18px;
-      color: rgba(1,20,37,0.60);
-      flex: 0 0 18px;
-    }
-    .nav a[aria-current="page"] .navIcon { color: rgba(1,20,37,0.75); }
-
-    .findme { padding: 18px 16px 18px; margin-top: 16px; }
-    .kickerLeft {
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(1,20,37,0.45);
-      margin: 0 6px 12px;
-    }
-
-    .findLink {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 12px 12px;
-      border-radius: 14px;
-      text-decoration: none;
-      background: rgba(1,20,37,0.03);
-      border: 1px solid rgba(1,20,37,0.07);
-      color: rgba(1,20,37,0.85);
-      margin-bottom: 10px;
-    }
-    .findLink:hover { background: rgba(92,124,137,0.12); }
-    .findLeft { display:flex; align-items:center; gap:10px; }
-    .findIcon { width: 18px; height: 18px; color: rgba(1,20,37,0.60); }
-    .ext { color: rgba(1,20,37,0.45); }
-
-    .footerNote {
-      margin-top: 16px;
-      font-size: 13px;
-      line-height: 1.35;
-      color: rgba(1,20,37,0.52);
-      padding: 10px 6px 0;
-    }
-
-    /* Right side: sticky header but NO overlap + tight spacing */
-    .content { padding-top: 28px; }
-
-    .heroFixed {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      padding: 10px 0 14px;
-      background: linear-gradient(
-        180deg,
-        rgba(1,20,37,0.94) 0%,
-        rgba(1,20,37,0.86) 55%,
-        rgba(1,20,37,0.00) 100%
-      );
-      backdrop-filter: blur(10px);
-    }
-    .heroFixed h1 { margin: 0 0 10px; }
-    .chatCopy { margin: 0; max-width: 72ch; color: rgba(255,255,255,0.88); }
-    .chatPS { margin: 10px 0 0; max-width: 86ch; color: rgba(92,124,137,0.95); }
-
-    .heroDivider {
-      height: 1px;
-      background: rgba(255,255,255,0.12);
-      margin-top: 14px;
-    }
-
-    .belowHero { margin-top: 18px; }
-
-    .embedShell {
+    .embedShell{
       margin-top: 14px;
       border-radius: 24px;
       overflow: hidden;
@@ -159,9 +27,9 @@
       box-shadow: 0 14px 30px rgba(0,0,0,0.18);
       background: rgba(255,255,255,0.06);
       padding: 10px;
+      max-width: 1100px;
     }
-
-    .calFrame {
+    .calFrame{
       width: 100%;
       height: 860px;
       border: 0;
@@ -169,149 +37,46 @@
       background: #ffffff;
       display: block;
     }
-
-    @media (max-width: 900px) {
-      .content { padding-top: 18px; }
-      .calFrame { height: 900px; }
+    @media (max-width: 900px){
+      .calFrame{ height: 920px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div id="vk-page">
 
-    <!-- LEFT NAV -->
-    <aside class="sidebar">
-      <div class="brandRow">
-        <a href="./index.html" style="text-decoration:none;">
-          <div class="brandTop">
-            <div class="nameLine">Vibhav <span class="vi">"Vi"</span></div>
-            <div class="pillarsLine">Product | Marketing | Growth</div>
-          </div>
-        </a>
-        <div class="traitsLine">Lifelong learner, Always curious, Rarely offended</div>
+    <section>
+      <h1>Let’s talk.</h1>
+
+      <p class="chatCopy">
+        Career advice, product brainstorming, a thorny problem, or a genuine conversation.
+        If there’s mutual learning, I’m in.
+      </p>
+
+      <p class="small chatPS">
+        <strong>P.S.</strong> If you have something to sell, please don’t book this slot.
+        I started my career in sales (the cold-calling kind), so I can spot it from a mile away.
+        If you want to reach me, email or LinkedIn is the better route — I’ll respond when I can.
+      </p>
+    </section>
+
+    <section style="margin-top:18px;">
+      <div class="kicker">Book time</div>
+      <h2 style="margin-top:10px;">Let’s chat for 25 mins</h2>
+
+      <div class="embedShell">
+        <iframe
+          class="calFrame"
+          src="https://cal.com/vikamat/lets-chat-for-25-mins?embed=1&theme=light"
+          allow="camera; microphone; fullscreen; payment"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Cal.com booking — Let’s chat for 25 mins">
+        </iframe>
       </div>
+    </section>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="./about.html">
-          <svg class="navIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20 21a8 8 0 0 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M12 13a5 5 0 1 0-5-5 5 5 0 0 0 5 5Z" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          About
-        </a>
-
-        <a href="./work.html">
-          <svg class="navIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M13 2 3 14h7l-1 8 12-14h-7l-1-6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
-          Build
-        </a>
-
-        <a href="./life.html">
-          <svg class="navIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 21s-7-4.6-9.5-9A5.6 5.6 0 0 1 12 5.5 5.6 5.6 0 0 1 21.5 12C19 16.4 12 21 12 21Z"
-              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
-          Live
-        </a>
-
-        <a href="./art.html">
-          <svg class="navIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M12 15a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          See
-        </a>
-
-        <a href="./chat.html" aria-current="page">
-          <svg class="navIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"
-              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
-          Let’s chat
-        </a>
-      </nav>
-
-      <div class="findme">
-        <div class="kickerLeft">Find Me</div>
-
-        <a class="findLink" href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
-          <span class="findLeft">
-            <svg class="findIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 9v11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M4 5.5a1.5 1.5 0 1 0 0-.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M9 20v-6.5A3.5 3.5 0 0 1 12.5 10 3.5 3.5 0 0 1 16 13.5V20"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M9 11v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            LinkedIn
-          </span>
-          <span class="ext">↗</span>
-        </a>
-
-        <a class="findLink" href="mailto:letsconnectwithvi@gmail.com">
-          <span class="findLeft">
-            <svg class="findIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
-            Email me
-          </span>
-        </a>
-
-        <div class="footerNote">
-          © <span id="year"></span> Vikamat.<br/>
-          Built with AI prompts, coffee and desire to learn.
-        </div>
-      </div>
-    </aside>
-
-    <!-- RIGHT PANEL -->
-    <main class="main">
-      <div class="content">
-
-        <!-- Sticky header -->
-        <section class="heroFixed">
-          <h1>Let’s talk.</h1>
-
-          <p class="chatCopy">
-            Career advice, product brainstorming, a thorny problem, or a genuine conversation.
-            If there’s mutual learning, I’m in.
-          </p>
-
-          <p class="small chatPS">
-            <strong>P.S.</strong> If you have something to sell, please don’t book this slot.
-            I started my career in sales (the cold-calling kind), so I can spot it from a mile away.
-            If you want to reach me, email or LinkedIn is the better route — I’ll respond when I can.
-          </p>
-
-          <div class="heroDivider"></div>
-        </section>
-
-        <!-- Booking -->
-        <section class="belowHero">
-          <div class="kicker">Book time</div>
-          <h2 style="margin-top:10px;">Let’s chat for 25 mins</h2>
-
-          <div class="embedShell">
-            <iframe
-              class="calFrame"
-              src="https://cal.com/vikamat/lets-chat-for-25-mins?embed=1&theme=light"
-              allow="camera; microphone; fullscreen; payment"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Cal.com booking — Let’s chat for 25 mins">
-            </iframe>
-          </div>
-        </section>
-
-      </div>
-    </main>
   </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
