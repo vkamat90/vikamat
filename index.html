@@ -8,185 +8,244 @@
   <link rel="stylesheet" href="./css/tokens.css" />
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/components.css" />
+  <link rel="stylesheet" href="./css/site.css" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token":"ba6df2a0397d42bd9c072756f467bf76"}'></script>
+
+  <!-- Shared sticky top header -->
+  <script defer src="./js/layout.js"></script>
+
+  <style>
+    /* Home-specific polish (kept minimal + safe) */
+    .homeHero h1{
+      margin: 0 0 12px;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+    }
+    .homeHero .quote{
+      margin: 0;
+      max-width: 72ch;
+      color: rgba(255,255,255,0.88);
+    }
+    .homeHero .quote strong{ color: rgba(255,255,255,0.94); }
+    .homeHero .subquote{
+      margin-top: 10px;
+      color: rgba(92,124,137,0.95);
+      max-width: 80ch;
+    }
+
+    /* Tabs */
+    .tabsRow{
+      margin-top: 22px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .tabBtn{
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.88);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform .08s ease, background .15s ease;
+    }
+    .tabBtn:hover{ background: rgba(255,255,255,0.10); }
+    .tabBtn:active{ transform: translateY(1px); }
+    .tabBtn[aria-selected="true"]{
+      background: rgba(255,255,255,0.16);
+      border-color: rgba(255,255,255,0.22);
+      color: #fff;
+    }
+
+    /* Post mount container */
+    .postsWrap{
+      margin-top: 16px;
+    }
+
+    /* If your posts.js renders anchors with class postRow, ensure visibility on dark bg */
+    a.postRow{
+      display: block;
+      text-decoration: none;
+      border-radius: 18px;
+      padding: 16px 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.90);
+      margin-bottom: 12px;
+    }
+    a.postRow:hover{
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.18);
+    }
+    .postMeta{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.70);
+      font-size: 13px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.88);
+    }
+    .emptyState{
+      margin-top: 10px;
+      padding: 14px 14px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.04);
+      max-width: 900px;
+    }
+
+    /* CTA card */
+    .ctaCard{
+      margin-top: 28px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      padding: 18px 18px;
+      max-width: 1000px;
+    }
+    .ctaCard h3{ margin: 0 0 10px; }
+    .ctaCard p{ margin: 0 0 12px; color: rgba(255,255,255,0.86); max-width: 90ch; }
+    .ctaCard .ps{ margin: 0; color: rgba(92,124,137,0.95); }
+    .ctaActions{ margin-top: 14px; display:flex; gap:10px; flex-wrap: wrap; }
+    .ctaBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+    .ctaBtn:hover{ background: rgba(255,255,255,0.20); }
+    .ctaBtnSecondary{
+      background: rgba(255,255,255,0.06);
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <!-- LEFT NAV -->
-    <aside class="sidebar">
-      <div class="brandRow">
-        <div class="brand">
-          <a href="./index.html" class="brandLink">
-            <div class="nameLine">Vibhav <span class="vi">"Vi"</span></div>
-          </a>
+  <div id="vk-page">
 
-          <div class="introLine1">Product | Marketing | Growth</div>
-          <div class="introLine2">Lifelong learner, Always curious, Rarely offended</div>
-        </div>
+    <!-- Landing Hook -->
+    <section class="homeHero reveal">
+      <h1>Every breakthrough begins with a <em>question</em>.</h1>
+      <p class="quote">“Be curious, not judgemental.” — Ted Lasso</p>
+    </section>
 
-        <button class="navToggle" id="navToggle" aria-label="Toggle navigation">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M15 18l-6-6 6-6"></path>
-          </svg>
-        </button>
+    <!-- Tabs: Build / Live / See -->
+    <section class="reveal" style="margin-top:22px;">
+      <div class="kicker">Explore</div>
+
+      <div class="tabsRow" role="tablist" aria-label="Content tabs">
+        <button class="tabBtn" id="tabBuild" type="button" role="tab" aria-selected="true" data-filter="work">Build</button>
+        <button class="tabBtn" id="tabLive"  type="button" role="tab" aria-selected="false" data-filter="life">Live</button>
+        <button class="tabBtn" id="tabSee"   type="button" role="tab" aria-selected="false" data-filter="art">See</button>
       </div>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="./about.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="8" r="4"></circle>
-            <path d="M4 21c1.5-4 14.5-4 16 0"></path>
-          </svg>
-          <span class="navLabel">About</span>
-        </a>
-
-        <a href="./work.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2l-3 7h4l-1 7 5-9h-4l1-5z"></path>
-          </svg>
-          <span class="navLabel">Build</span>
-        </a>
-
-        <a href="./life.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 21s-8-5-9-9a5 5 0 0 1 9-4 5 5 0 0 1 9 4c-1 4-9 9-9 9z"></path>
-          </svg>
-          <span class="navLabel">Live</span>
-        </a>
-
-        <a href="./art.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9"></circle>
-            <path d="M3 12h18"></path>
-          </svg>
-          <span class="navLabel">See</span>
-        </a>
-      </nav>
-
-      <div class="findme">
-        <div class="kickerLeft">Find Me</div>
-
-        <a class="findLink" href="https://www.linkedin.com/in/vibhavkamat/" target="_blank" rel="noreferrer">
-          <span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-              <path d="M10 9v12"></path>
-              <path d="M14 9v12"></path>
-              <path d="M14 14a5 5 0 0 1 8 0v7"></path>
-            </svg>
-            <span class="findLabel">LinkedIn</span>
-          </span>
-          <span class="ext">↗</span>
-        </a>
-
-        <a class="findLink" href="./chat.html">
-          <span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>
-            </svg>
-            <span class="findLabel">Let’s chat</span>
-          </span>
-        </a>
-
-        <a class="findLink" href="mailto:letsconnectwithvi@gmail.com">
-          <span class="left">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="4" width="20" height="16"></rect>
-              <path d="M22 6l-10 7L2 6"></path>
-            </svg>
-            <span class="findLabel">Email me</span>
-          </span>
-        </a>
-
-        <div class="footerNote">
-          © <span id="year"></span> Vikamat.<br/>
-          Built with AI prompts, coffee and desire to learn.
+      <div class="postsWrap">
+        <div id="postsMountHome"></div>
+        <div id="homeEmpty" class="emptyState" style="display:none;">
+          Nothing published here yet. This section will auto-populate when you add posts to <code>data/posts.js</code>.
         </div>
       </div>
-    </aside>
+    </section>
 
-    <!-- RIGHT MAIN -->
-    <main class="main">
-      <div class="content">
-        <!-- Fixed hero -->
-        <section class="heroFixed">
-          <h1>Every breakthrough begins with a <em>question</em>.</h1>
-          <p class="quote">“Be curious, not judgemental.” — Ted Lasso</p>
-        </section>
+    <!-- Mentorship CTA -->
+    <section class="reveal" style="margin-top: 28px;">
+      <div class="ctaCard">
+        <h3>If you’re building something, let’s talk.</h3>
 
-        <!-- Browse + Tabs + Posts -->
-        <section class="belowHero">
-          <div class="kicker">Browse</div>
-          <h2 class="sectionTitle">Build. Live. See.</h2>
+        <p>
+          Whether you're someone looking for career advice, someone who wants to pick my brains on an exciting project,
+          someone who just needs to talk, or someone who wants to bounce off an idea — I’m happy to connect where there’s mutual learning.
+        </p>
 
-          <div class="chips">
-            <button class="chip active" type="button" data-home-tab="work">Build</button>
-            <button class="chip" type="button" data-home-tab="life">Live</button>
-            <button class="chip" type="button" data-home-tab="art">See</button>
-          </div>
+        <p class="ps">
+          <strong>Note:</strong> If you are trying to sell me something, please don’t.
+          I started my career as a salesman and I can smell it.
+        </p>
 
-          <div class="posts" id="homePosts"></div>
-        </section>
+        <div class="ctaActions">
+          <a class="ctaBtn" href="./chat.html">Let’s chat</a>
+          <a class="ctaBtn ctaBtnSecondary" href="./work.html">Read Build</a>
+        </div>
       </div>
-    </main>
+    </section>
+
   </div>
 
-  <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Sidebar collapse (RESET KEY so you don't inherit your old collapsed state)
-    const KEY = "vk_nav_collapsed_v2";
-    const root = document.documentElement;
-    const btn = document.getElementById("navToggle");
-
-    if (localStorage.getItem(KEY) === "1") root.classList.add("nav-collapsed");
-
-    btn.addEventListener("click", () => {
-      root.classList.toggle("nav-collapsed");
-      localStorage.setItem(KEY, root.classList.contains("nav-collapsed") ? "1" : "0");
-    });
-  </script>
-
-  <!-- IMPORTANT: Order matters -->
+  <script src="./js/reveal.js"></script>
   <script src="./data/posts.js"></script>
   <script src="./js/posts.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const mountId = "homePosts";
-
-      function render(tag) {
-        if (typeof window.VK_RENDER_POSTS === "function") {
-          window.VK_RENDER_POSTS({ mountId, filterTag: tag });
-
-          // Keep homepage tight: show max 4 cards
-          const cards = Array.from(document.querySelectorAll("#homePosts a.postRow"));
-          cards.slice(4).forEach(n => n.remove());
-        } else {
-          const mount = document.getElementById(mountId);
-          if (mount) mount.innerHTML = '<div class="emptyState">Renderer not loaded (js/posts.js).</div>';
-        }
+    // Home tab switching (Build/Live/See) + render posts
+    (function () {
+      function setSelected(btn) {
+        document.querySelectorAll(".tabBtn").forEach(b => b.setAttribute("aria-selected", "false"));
+        btn.setAttribute("aria-selected", "true");
       }
 
-      document.querySelectorAll("[data-home-tab]").forEach(btn => {
-        btn.addEventListener("click", function () {
-          document.querySelectorAll("[data-home-tab]").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
+      function render(filterTag) {
+        const empty = document.getElementById("homeEmpty");
+        const mount = document.getElementById("postsMountHome");
+        if (!mount) return;
 
-          const key = btn.dataset.homeTab;
-          render(key === "work" ? "work" : key === "life" ? "life" : "art");
-        });
+        // Guard: posts renderer
+        if (typeof window.VK_RENDER_POSTS !== "function") {
+          mount.innerHTML = "";
+          if (empty) empty.style.display = "block";
+          return;
+        }
+
+        // Render
+        window.VK_RENDER_POSTS({ mountId: "postsMountHome", filterTag: filterTag });
+
+        // If no cards, show empty state
+        setTimeout(() => {
+          const hasCards = mount.querySelector("a.postRow");
+          if (empty) empty.style.display = hasCards ? "none" : "block";
+        }, 0);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabBuild = document.getElementById("tabBuild");
+        const tabLive  = document.getElementById("tabLive");
+        const tabSee   = document.getElementById("tabSee");
+
+        function onTabClick(e) {
+          const btn = e.currentTarget;
+          setSelected(btn);
+          render(btn.dataset.filter || "work");
+        }
+
+        [tabBuild, tabLive, tabSee].forEach(b => b && b.addEventListener("click", onTabClick));
+
+        // Default
+        render("work");
       });
-
-      render("work");
-    });
+    })();
   </script>
-
-  <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-  data-cf-beacon='{"token":"ba6df2a0397d42bd9c072756f467bf76"}'></script>
-
 </body>
 </html>
