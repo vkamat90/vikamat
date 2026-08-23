@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Vibhav Kamat monogram. Cap height 100 u, mark 98 x 100 u.
+     Stem 26 u at 26.1 deg. Wedge inner edge: one cubic. Dot 23.4 u on the baseline.
+     Clear space on all sides = 26 u (one stem width). Minimum size 16 px. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 100" width="98" height="100" fill="#F2EDE3" role="img" aria-label="Vibhav Kamat">
+  <path d="M0 0H26L62 73.47L49 100Z"/>
+  <path d="M72 0C73.3 2.4 83.8 3.6 83.8 29L98 0Z"/>
+  <circle cx="85.0" cy="88.3" r="11.7"/>
+</svg>

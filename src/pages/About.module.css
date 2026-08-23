@@ -1,0 +1,190 @@
+.header {
+  padding: 72px 0 56px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 48px;
+  align-items: end;
+}
+
+.title {
+  font-size: clamp(34px, 5vw, 56px);
+  margin-top: 12px;
+}
+
+.intro {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+
+.intro p + p {
+  margin-top: 18px;
+}
+
+.values {
+  padding: 56px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.value {
+  padding-top: 18px;
+  border-top: 2px solid var(--accent);
+}
+
+.valueTitle {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.valueBody {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.timelineSection {
+  padding: 88px 0;
+}
+
+.timeline {
+  margin-top: 44px;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 118px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: var(--border);
+}
+
+.timeItem {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 40px;
+  padding: 24px 0;
+  position: relative;
+}
+
+.timeYear {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-faint);
+  padding-top: 3px;
+  text-align: right;
+}
+
+.timeDot {
+  position: absolute;
+  left: 114px;
+  top: 28px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timeContent {
+  padding-left: 24px;
+}
+
+.timeRole {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.timeOrg {
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timeBody {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  max-width: 60ch;
+}
+
+.causes {
+  padding-bottom: 100px;
+}
+
+.causesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.causeCard {
+  padding: 28px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.causeTitle {
+  font-size: 19px;
+  font-family: var(--font-serif);
+}
+
+.causeBody {
+  margin-top: 12px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+@media (max-width: 900px) {
+  .header {
+    grid-template-columns: 1fr;
+  }
+
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timeline::before {
+    left: 6px;
+  }
+
+  .timeItem {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .timeYear {
+    text-align: left;
+  }
+
+  .timeDot {
+    left: 2px;
+    top: 6px;
+  }
+
+  .timeContent {
+    padding-left: 24px;
+  }
+
+  .causesGrid {
+    grid-template-columns: 1fr;
+  }
+}

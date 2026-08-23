@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Vibhav Kamat. Cap height 100 u, mark 98 x 100 u. Stem 26 u at 26.1 deg.
+     Wedge inner edge: one cubic. Dot 23.4 u on the baseline.
+     Clear space all sides = 26 u (one stem). Minimum size 16 px. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 441 100" width="441" height="100" role="img" aria-label="Vibhav Kamat">
+  <!-- Wordmark is live text in Jost 500, width-locked with textLength so the lockup
+       holds its proportions in any renderer. For print, open once in Illustrator /
+       Figma / Inkscape and convert text to outlines. Jost: fonts.google.com/specimen/Jost -->
+  <style>@import url("https://fonts.googleapis.com/css2?family=Jost:wght@500&amp;display=swap");</style>
+  <g fill="#23211C">
+    <path d="M0 0H26L62 73.47L49 100Z"/>
+    <path d="M72 0C73.3 2.4 83.8 3.6 83.8 29L98 0Z"/>
+    <circle cx="85.0" cy="88.3" r="11.7"/>
+  </g>
+  <rect x="128" y="22.5" width="1" height="55" fill="#23211C" opacity="0.35"/>
+  <text x="159" y="62.7" fill="#23211C" font-family="Jost, 'Century Gothic', Futura, 'Avenir Next', sans-serif" font-weight="500" font-size="35.3" textLength="282" lengthAdjust="spacing">VIBHAV KAMAT</text>
+</svg>

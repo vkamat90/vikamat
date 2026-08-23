@@ -1,0 +1,87 @@
+.wrap {
+  padding: 64px 0 120px;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-faint);
+  transform: rotate(180deg);
+}
+
+.backRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.backLabel {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.12;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-faint);
+}
+
+.tag {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dek {
+  margin-top: 26px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--text-soft);
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+.body {
+  margin-top: 44px;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.body p + p {
+  margin-top: 26px;
+}
+
+.draftNote {
+  margin-top: 56px;
+  padding: 16px 20px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+.notFound {
+  padding: 120px 0;
+  text-align: center;
+}
